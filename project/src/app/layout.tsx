@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Jirasit Karunwong | Portfolio",
 	description: "Minimal portfolio showcasing projects and skills",
+	icons: {
+		icon: "/images/icon.png",
+		shortcut: "/images/icon.png",
+		apple: "/images/icon.png",
+	},
 };
 
 export default function RootLayout({

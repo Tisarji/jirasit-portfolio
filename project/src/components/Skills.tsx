@@ -12,7 +12,7 @@ export default function Skills() {
 		},
 		{
 			title: "Tools & Others",
-			skills: ["Git", "Docker", "AWS", "Figma", "Linux", "Agile"],
+			skills: ["Vscode, Vim","Git", "Docker", "Figma", "Linux", "Agile"],
 			icon: "🛠️"
 		}
 	];

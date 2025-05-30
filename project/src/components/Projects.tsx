@@ -1,36 +1,36 @@
 export default function Projects() {
 	const projects = [
 		{
-			title: "E-Commerce Platform",
-			description: "A full-stack e-commerce solution built with Next.js, featuring user authentication, payment integration, and admin dashboard.",
-			technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
-			github: "https://github.com/yourusername/ecommerce-platform",
+			title: "Reserve - Booking System",
+			description: "A comprehensive booking system for managing reservations, featuring user authentication, calendar integration, and real-time notifications.",
+			technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+			github: "https://github.com/Tisarji/Reserve-Project",
 			demo: "https://your-ecommerce-demo.vercel.app",
-			image: "🛒"
-		},
-		{
-			title: "Task Management App",
-			description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-			technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-			github: "https://github.com/yourusername/task-manager",
-			demo: "https://your-task-manager.vercel.app",
-			image: "📋"
-		},
-		{
-			title: "Weather Dashboard",
-			description: "A responsive weather application providing detailed forecasts, interactive maps, and location-based weather alerts.",
-			technologies: ["React", "Weather API", "Chart.js", "Tailwind CSS"],
-			github: "https://github.com/yourusername/weather-dashboard",
-			demo: "https://your-weather-app.vercel.app",
-			image: "🌤️"
+			image: "📅"
 		},
 		{
 			title: "Portfolio Website",
 			description: "A minimal and elegant portfolio website showcasing projects and skills with a clean, responsive design.",
 			technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
-			github: "https://github.com/yourusername/portfolio",
+			github: "https://github.com/Tisarji/jirasit-portfolio",
 			demo: "https://your-portfolio.vercel.app",
 			image: "💼"
+		},
+		{
+			title: "Push Swap - 42 School Project",
+			description: "An efficient sorting algorithm implementation using C, designed to handle large datasets with minimal memory usage.",
+			technologies: ["C", "Algorithms", "Stack Operations", "Makefile"],
+			github: "https://github.com/Tisarji/push-swap-42cursus",
+			demo: "https://your-weather-app.vercel.app",
+			image: "🔄"
+		},
+		{
+			title: "Philosopher - 42 School Project",
+			description: "A collaborative platform for 42 School students to share and discuss philosophical topics, featuring user profiles, discussion threads, and a voting system.",
+			technologies: ["C", "Threading", "Mutex", "Semaphores"],
+			github: "https://github.com/Tisarji/philosopher-42cursus",
+			demo: "https://your-task-manager.vercel.app",
+			image: "🤔"
 		}
 	];
 
@@ -117,7 +117,7 @@ export default function Projects() {
 				
 				<div className="text-center mt-16">
 					<a 
-						href="https://github.com/yourusername"
+						href="https://github.com/Tisarji"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="inline-flex items-center gap-3 px-8 py-4 border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 font-medium tracking-wide group"

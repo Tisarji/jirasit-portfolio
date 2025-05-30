@@ -4,27 +4,27 @@ export default function Footer() {
 	const socialLinks = [
 		{
 			name: "GitHub",
-			url: "https://github.com/jirasitkarunwong",
+			url: "https://github.com/Tisarji",
 			icon: "→",
 			description: "Code & Projects"
 		},
 		{
 			name: "LinkedIn",
-			url: "https://linkedin.com/in/jirasitkarunwong",
+			url: "https://www.linkedin.com/in/jirasit-karunwong-b0b480260/",
 			icon: "→",
 			description: "Professional Network"
 		},
 		{
 			name: "Email",
-			url: "mailto:jirasit.dev@gmail.com",
+			url: "mailto:jirasitkarunwong@gmail.com",
 			icon: "→",
 			description: "Direct Contact"
 		},
 		{
-			name: "Twitter",
-			url: "https://twitter.com/jirasitdev",
+			name: "Instagram",
+			url: "https://www.instagram.com/tisarji/",
 			icon: "→",
-			description: "Thoughts & Updates"
+			description: "Personal Moments and Updates"
 		}
 	];
 
@@ -73,7 +73,7 @@ export default function Footer() {
 									<div>
 										<p className="text-sm text-gray-500 dark:text-gray-500">Email</p>
 										<p className="text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors">
-											jirasit.dev@gmail.com
+											jirasitkarunwong@gmail.com
 										</p>
 									</div>
 								</div>
