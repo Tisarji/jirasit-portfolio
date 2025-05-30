@@ -1,4 +1,5 @@
 # 🌟 Jirasit Portfolio
+<img width="1661" alt="image" src="https://github.com/user-attachments/assets/7558e4e2-c00d-437e-81fc-380f6195a3f1" />
 
 A modern, responsive portfolio website built with Next.js 14 and pure Tailwind CSS. Features smooth animations, dark/light theme toggle, and showcases my projects and skills as a software developer.
 
