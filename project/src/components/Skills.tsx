@@ -1,19 +1,25 @@
+"use client";
+
+import PaletteIcon from '@mui/icons-material/Palette';
+import StorageIcon from '@mui/icons-material/Storage';
+import BuildIcon from '@mui/icons-material/Build';
+
 export default function Skills() {
 	const skillCategories = [
 		{
 			title: "Frontend",
 			skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
-			icon: "🎨"
+			icon: <PaletteIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Backend",
 			skills: ["Node.js", "Express.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"],
-			icon: "⚙️"
+			icon: <StorageIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Tools & Others",
 			skills: ["Vscode, Vim","Git", "Docker", "Figma", "Linux", "Agile"],
-			icon: "🛠️"
+			icon: <BuildIcon sx={{ fontSize: 48 }} />
 		}
 	];
 

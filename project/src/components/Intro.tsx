@@ -1,3 +1,10 @@
+"use client";
+
+import BoltIcon from '@mui/icons-material/Bolt';
+import ComputerIcon from '@mui/icons-material/Computer';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+
 export default function Intro() {
 	return (
 		<section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden px-6 md:px-8">
@@ -129,19 +136,19 @@ export default function Intro() {
 				</div>
 
 				{/* Enhanced Floating Elements */}
-				<div className="absolute -top-12 -left-12 text-6xl opacity-10 animate-float">⚡</div>
+				<div className="absolute -top-12 -left-12 opacity-10 animate-float"><BoltIcon sx={{ fontSize: 60 }} /></div>
 				<div 
-					className="absolute -bottom-12 -right-12 text-5xl opacity-10 animate-float"
+					className="absolute -bottom-12 -right-12 opacity-10 animate-float"
 					style={{animationDelay: '1s'}}
-				>💻</div>
+				><ComputerIcon sx={{ fontSize: 50 }} /></div>
 				<div 
-					className="absolute top-1/4 -right-8 text-3xl opacity-10 animate-bounce-gentle"
+					className="absolute top-1/4 -right-8 opacity-10 animate-bounce-gentle"
 					style={{animationDelay: '2s'}}
-				>🚀</div>
+				><RocketLaunchIcon sx={{ fontSize: 30 }} /></div>
 				<div 
-					className="absolute bottom-1/4 -left-8 text-4xl opacity-10 animate-bounce-gentle"
+					className="absolute bottom-1/4 -left-8 opacity-10 animate-bounce-gentle"
 					style={{animationDelay: '3s'}}
-				>✨</div>
+				><AutoAwesomeIcon sx={{ fontSize: 40 }} /></div>
 			</div>
 
 			{/* Scroll Indicator */}

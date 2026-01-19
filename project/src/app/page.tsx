@@ -3,6 +3,7 @@ import Skills from "@/components/Skills";
 import Intro from "@/components/Intro";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import Career from "@/components/Career";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -33,6 +34,12 @@ export default function Home() {
 					<section id="skills" className="py-20">
 						<div className="px-6 md:px-8">
 							<Skills />
+						</div>
+					</section>
+					
+					<section id="career" className="py-20">
+						<div className="px-6 md:px-8">
+							<Career />
 						</div>
 					</section>
 					

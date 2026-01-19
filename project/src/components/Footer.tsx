@@ -1,3 +1,8 @@
+"use client";
+
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 	
@@ -68,7 +73,7 @@ export default function Footer() {
 							<div className="space-y-4">
 								<div className="group flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-900/50 rounded-lg transition-all duration-300">
 									<div className="w-8 h-8 bg-black dark:bg-white rounded-full flex items-center justify-center">
-										<span className="text-white dark:text-black text-sm">✉</span>
+										<EmailIcon sx={{ fontSize: 16 }} className="text-white dark:text-black" />
 									</div>
 									<div>
 										<p className="text-sm text-gray-500 dark:text-gray-500">Email</p>
@@ -80,7 +85,7 @@ export default function Footer() {
 								
 								<div className="group flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-900/50 rounded-lg transition-all duration-300">
 									<div className="w-8 h-8 bg-black dark:bg-white rounded-full flex items-center justify-center">
-										<span className="text-white dark:text-black text-sm">📍</span>
+										<LocationOnIcon sx={{ fontSize: 16 }} className="text-white dark:text-black" />
 									</div>
 									<div>
 										<p className="text-sm text-gray-500 dark:text-gray-500">Location</p>

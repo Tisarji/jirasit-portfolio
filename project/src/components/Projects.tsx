@@ -1,3 +1,10 @@
+"use client";
+
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import WorkIcon from '@mui/icons-material/Work';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+
 export default function Projects() {
 	const projects = [
 		{
@@ -6,7 +13,7 @@ export default function Projects() {
 			technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
 			github: "https://github.com/Tisarji/Reserve-Project",
 			demo: "https://your-ecommerce-demo.vercel.app",
-			image: "📅"
+			image: <CalendarMonthIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Portfolio Website",
@@ -14,7 +21,7 @@ export default function Projects() {
 			technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
 			github: "https://github.com/Tisarji/jirasit-portfolio",
 			demo: "https://your-portfolio.vercel.app",
-			image: "💼"
+			image: <WorkIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Push Swap - 42 School Project",
@@ -22,7 +29,7 @@ export default function Projects() {
 			technologies: ["C", "Algorithms", "Stack Operations", "Makefile"],
 			github: "https://github.com/Tisarji/push-swap-42cursus",
 			demo: "https://your-weather-app.vercel.app",
-			image: "🔄"
+			image: <SwapHorizIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Philosopher - 42 School Project",
@@ -30,7 +37,7 @@ export default function Projects() {
 			technologies: ["C", "Threading", "Mutex", "Semaphores"],
 			github: "https://github.com/Tisarji/philosopher-42cursus",
 			demo: "https://your-task-manager.vercel.app",
-			image: "🤔"
+			image: <PsychologyIcon sx={{ fontSize: 48 }} />
 		}
 	];
 

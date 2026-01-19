@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +9,7 @@ export default function Navigation() {
 	const navItems = [
 		{ name: "About", href: "#about" },
 		{ name: "Skills", href: "#skills" },
+		{ name: "Career", href: "#career" },
 		{ name: "Projects", href: "#projects" },
 		{ name: "Contact", href: "#contact" }
 	];
@@ -57,16 +57,10 @@ export default function Navigation() {
 								<div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black dark:bg-white transform -translate-x-1/2 group-hover:w-8 transition-all duration-300"></div>
 							</a>
 						))}
-						
-						{/* Separator */}
-						<div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-4"></div>
-						
-						<ThemeToggle />
 					</div>
 
-					{/* Enhanced Mobile menu button and theme toggle */}
-					<div className="md:hidden flex items-center gap-4">
-						<ThemeToggle />
+					{/* Enhanced Mobile menu button */}
+					<div className="md:hidden flex items-center">
 						<button
 							className="group relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors duration-300"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
