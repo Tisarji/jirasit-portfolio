@@ -26,12 +26,22 @@ const TechIcons: Record<string, React.ReactNode> = {
 	"Python": <CodeIcon sx={{ fontSize: 16 }} />,
 };
 
+// Calculate months from start date to now
+const calculateDuration = (startYear: number, startMonth: number): string => {
+	const now = new Date();
+	const start = new Date(startYear, startMonth - 1); // month is 0-indexed
+	const diffMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+	return `${diffMonths} month${diffMonths !== 1 ? 's' : ''}`;
+};
+
 export default function Career() {
+	const internshipDuration = calculateDuration(2025, 6); // June 2025
+
 	const internship = {
 		title: "Software Engineer Internship",
 		company: "Sati Co., Ltd.",
 		location: "Chiang Mai, Thailand",
-		period: "Jun 2025 - Present · 8 months",
+		period: `Jun 2025 - Present · ${internshipDuration}`,
 		type: "Internship · On-site",
 		description: `Full Stack Developer responsible for developing an internal ERP system and collaborating on company projects. Covered the full software lifecycle: requirement gathering, system design, development, and maintenance.`,
 		projects: [
@@ -61,16 +71,23 @@ export default function Career() {
 	};
 
 	const education = [
-		{
+			{
 			institution: "Mahanakorn University of Technology",
 			degree: "Bachelor's Degree, Computer Engineering",
-			activities: "Basketball player representing the university. Staff member for campus events."
+			activities: "Basketball player representing the university. Staff member for campus events.",
+			softSkills: ["Leadership", "Team Collaboration", "Event Coordination"],
+			coursework: [
+				{ title: "Database Systems", description: "Database design and management using Oracle. SQL optimization and normalization.", tech: ["Oracle", "SQL", "PL/SQL"] },
+				{ title: "Reserve Book Project", description: "A comprehensive booking system for managing reservations with user authentication and calendar integration.", tech: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"], github: "https://github.com/Tisarji/Reserve-Project" }
+			]
 		},
 		{
 			institution: "42 Bangkok",
-			focus: "Operating Systems & Leadership",
+			degree: "Cadet, Computer Science",
+			focus: "Operating Systems & Peer to Peer",
 			courses: [
-				{ title: "Operating Systems Coursework", description: "Intensive OS projects in C. Memory management, performance optimization." },
+				{ title: "Operating Systems Coursework", description: "Intensive OS projects in C. Memory management, performance optimization, and defensive programming." },
+				{ title: "Peer to Peer & Defense", description: "Project defense and code review system. Develops logical thinking to protect systems from bugs and vulnerabilities. Strengthens soft skills in negotiation and technical communication." },
 				{ title: "TA / Tutor – Web Dev (KMITL)", description: "Guided students in responsive design and JavaScript." },
 				{ title: "Hackathon Staff", description: "Technical support and coordination." }
 			]
@@ -278,7 +295,48 @@ export default function Career() {
 								<p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
 									{education[0].activities}
 								</p>
+								{/* Soft Skills */}
+								{'softSkills' in education[0] && (education[0] as { softSkills: string[] }).softSkills && (
+									<div className="flex flex-wrap justify-center gap-2 pt-2">
+										{(education[0] as { softSkills: string[] }).softSkills.map((skill, i) => (
+											<span key={i} className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full">
+												{skill}
+											</span>
+										))}
+									</div>
+								)}
 							</div>
+							
+							{/* Coursework */}
+							{'coursework' in education[0] && (education[0] as { coursework: Array<{ title: string; description: string; tech: string[]; github?: string }> }).coursework && (
+								<div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+									<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider text-center">Relevant Coursework</p>
+									{(education[0] as { coursework: Array<{ title: string; description: string; tech: string[]; github?: string }> }).coursework.map((course, i) => (
+										<div key={i} className="p-4 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300 text-left space-y-2">
+											<h5 className="text-sm font-medium text-black dark:text-white">{course.title}</h5>
+											<p className="text-xs text-gray-600 dark:text-gray-400">{course.description}</p>
+											<div className="flex flex-wrap gap-1 pt-1">
+												{course.tech.map((t, j) => (
+													<span key={j} className="px-2 py-0.5 text-xs border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400">
+														{t}
+													</span>
+												))}
+											</div>
+											{course.github && (
+												<a 
+													href={course.github}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors mt-1"
+												>
+													<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+													View on GitHub
+												</a>
+											)}
+										</div>
+									))}
+								</div>
+							)}
 						</div>
 
 						{/* 42 Bangkok */}
@@ -290,6 +348,9 @@ export default function Career() {
 								<h4 className="text-xl font-medium text-black dark:text-white">
 									{education[1].institution}
 								</h4>
+								<p className="text-gray-700 dark:text-gray-300">
+									{education[1].degree}
+								</p>
 								<span className="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium rounded">
 									{education[1].focus}
 								</span>
@@ -297,9 +358,31 @@ export default function Career() {
 							
 							<div className="space-y-3 pt-4">
 								{education[1].courses?.map((course, i) => (
-									<div key={i} className="p-3 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300 text-left">
-										<h5 className="text-sm font-medium text-black dark:text-white mb-1">{course.title}</h5>
+									<div key={i} className="p-4 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300 text-left space-y-2">
+										<h5 className="text-sm font-medium text-black dark:text-white">{course.title}</h5>
 										<p className="text-xs text-gray-600 dark:text-gray-400">{course.description}</p>
+										{/* Tech Stack for Reserve Book */}
+										{'techStack' in course && (course as { techStack: string[] }).techStack && (
+											<div className="flex flex-wrap gap-1 pt-2">
+												{(course as { techStack: string[] }).techStack.map((tech, j) => (
+													<span key={j} className="px-2 py-0.5 text-xs border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400">
+														{tech}
+													</span>
+												))}
+											</div>
+										)}
+										{/* GitHub Link for Reserve Book */}
+										{'github' in course && (course as { github: string }).github && (
+											<a 
+												href={(course as { github: string }).github}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors mt-2"
+											>
+												<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+												View on GitHub
+											</a>
+										)}
 									</div>
 								))}
 							</div>
