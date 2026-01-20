@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -17,6 +17,8 @@ const TechIcons: Record<string, React.ReactNode> = {
 	"PostgreSQL": <StorageIcon sx={{ fontSize: 16 }} />,
 	"NestJS (TypeScript)": <CodeIcon sx={{ fontSize: 16 }} />,
 	"NestJS": <CodeIcon sx={{ fontSize: 16 }} />,
+	"Express (TypeScript)": <CodeIcon sx={{ fontSize: 16 }} />,
+	"Next.js (TypeScript)": <CodeIcon sx={{ fontSize: 16 }} />,
 	"React (TypeScript)": <CodeIcon sx={{ fontSize: 16 }} />,
 	"React": <CodeIcon sx={{ fontSize: 16 }} />,
 	"Ant Design": <DesignServicesIcon sx={{ fontSize: 16 }} />,
@@ -36,6 +38,7 @@ const calculateDuration = (startYear: number, startMonth: number): string => {
 
 export default function Career() {
 	const internshipDuration = calculateDuration(2025, 6); // June 2025
+	const [showLandingPage, setShowLandingPage] = useState(false);
 
 	const internship = {
 		title: "Software Engineer Internship",
@@ -59,11 +62,20 @@ export default function Career() {
 				aiAssisted: { frontend: "~40%", backend: "~20%" }
 			},
 			{
-				name: "Company Projects",
+				name: "Discharge Summary",
 				role: "Team Member",
 				methodology: "Agile Scrum",
-				techStack: ["AWS", "NestJS", "Fastify", "PostgreSQL", "Python", "React", "MUI"],
+				techStack: ["AWS", "NestJS (TypeScript)", "Express (TypeScript)", "Fastify", "PostgreSQL", "Python", "React (TypeScript)", "MUI"],
 				responsibilities: ["Code reviews", "Bug fixing", "Feature development"]
+			},
+			{
+				name: "Landing Page",
+				role: "Developer",
+				methodology: "Agile",
+				techStack: ["Next.js (TypeScript)", "MUI", "Figma"],
+				description: "Company landing page built from Figma design. Showcasing AI-powered healthcare solutions including ChartSum, AI Pre-Audit, and AI Claim Platform.",
+				overview: "Developed a modern, responsive landing page for Sati Co., Ltd. featuring product showcases, client testimonials, and integration highlights.",
+				demoUrl: "https://www.sati.co.th/"
 			}
 		],
 		skills: ["Full Stack", "System Design", "Database Design", "ERP", "Project Management"],
@@ -158,11 +170,13 @@ export default function Career() {
 						</div>
 
 						{/* Projects Grid */}
-						<div className="p-8">
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-								{internship.projects.map((project, idx) => (
+					<div className="p-8">
+						<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+							{/* Internal ERP System - First Card */}
+							{(() => {
+								const project = internship.projects[0];
+								return (
 									<div 
-										key={idx} 
 										className="group/card relative p-6 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-lg hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
 									>
 										{/* Project Header */}
@@ -195,7 +209,7 @@ export default function Career() {
 											</div>
 										</div>
 
-										{/* Features or Responsibilities */}
+										{/* Features */}
 										{project.features && (
 											<div className="mb-4">
 												<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Key Features</p>
@@ -206,20 +220,6 @@ export default function Career() {
 														</span>
 													))}
 												</div>
-											</div>
-										)}
-
-										{project.responsibilities && (
-											<div className="mb-4">
-												<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Responsibilities</p>
-												<ul className="space-y-1">
-													{project.responsibilities.map((item, i) => (
-														<li key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-															<span className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>
-															{item}
-														</li>
-													))}
-												</ul>
 											</div>
 										)}
 
@@ -240,8 +240,181 @@ export default function Career() {
 										{/* Hover accent line */}
 										<div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white transform scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left"></div>
 									</div>
-								))}
+								);
+							})()}
+
+							{/* Discharge Summary / Landing Page - Flip Card */}
+							<div 
+								className="relative cursor-pointer"
+								style={{ perspective: '1000px' }}
+								onClick={() => setShowLandingPage(!showLandingPage)}
+							>
+								<div 
+									className="relative transition-all duration-700 ease-in-out"
+									style={{ 
+										transformStyle: 'preserve-3d',
+										transform: showLandingPage ? 'rotateY(180deg)' : 'rotateY(0deg)'
+									}}
+								>
+									{/* Discharge Summary Card - Front */}
+									<div 
+										className="group/card relative p-6 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+										style={{ backfaceVisibility: 'hidden' }}
+									>
+										{(() => {
+											const project = internship.projects[1]; // Discharge Summary
+											return (
+												<>
+													{/* Project Header */}
+													<div className="flex items-start justify-between mb-4">
+														<h5 className="text-xl font-medium text-black dark:text-white">
+															{project.name}
+														</h5>
+														<div className="flex gap-2">
+															<span className="px-2 py-1 text-xs font-medium border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 rounded">
+																{project.methodology}
+															</span>
+														</div>
+													</div>
+
+													<p className="text-sm text-gray-500 dark:text-gray-500 mb-4">{project.role}</p>
+
+													{/* Tech Stack with Icons */}
+													<div className="mb-4">
+														<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Tech Stack</p>
+														<div className="flex flex-wrap gap-2">
+															{project.techStack.map((tech, i) => (
+																<span 
+																	key={i} 
+																	className="group/tech inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+																>
+																	{TechIcons[tech] || <CodeIcon sx={{ fontSize: 14 }} />}
+																	{tech}
+																</span>
+															))}
+														</div>
+													</div>
+
+													{/* Responsibilities */}
+													{project.responsibilities && (
+														<div className="mb-4">
+															<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Responsibilities</p>
+															<ul className="space-y-1">
+																{project.responsibilities.map((item, i) => (
+																	<li key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+																		<span className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>
+																		{item}
+																	</li>
+																))}
+															</ul>
+														</div>
+													)}
+
+													{/* Click hint */}
+													<div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+														<span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
+															<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+																<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+															</svg>
+															Click to view Landing Page
+														</span>
+														<svg className="w-5 h-5 text-gray-400 dark:text-gray-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+															<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+														</svg>
+													</div>
+												</>
+											);
+										})()}
+
+										{/* Hover accent line */}
+										<div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white transform scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left"></div>
+									</div>
+
+									{/* Landing Page Card - Back */}
+									<div 
+										className="group/card absolute inset-0 p-6 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+										style={{ 
+											backfaceVisibility: 'hidden',
+											transform: 'rotateY(180deg)'
+										}}
+									>
+										{(() => {
+											const project = internship.projects[2]; // Landing Page
+											return (
+												<>
+													{/* Project Header */}
+													<div className="flex items-start justify-between mb-4">
+														<h5 className="text-xl font-medium text-black dark:text-white">
+															{project.name}
+														</h5>
+														<div className="flex gap-2">
+															<span className="px-2 py-1 text-xs font-medium border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 rounded">
+																{project.methodology}
+															</span>
+														</div>
+													</div>
+
+													<p className="text-sm text-gray-500 dark:text-gray-500 mb-4">{project.role}</p>
+
+													{/* Tech Stack with Icons */}
+													<div className="mb-4">
+														<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Tech Stack</p>
+														<div className="flex flex-wrap gap-2">
+															{project.techStack.map((tech, i) => (
+																<span 
+																	key={i} 
+																	className="group/tech inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+																>
+																	{TechIcons[tech] || <CodeIcon sx={{ fontSize: 14 }} />}
+																	{tech}
+																</span>
+															))}
+														</div>
+													</div>
+
+													{/* Overview */}
+													{project.overview && (
+														<div className="mb-4">
+															<p className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-2">Overview</p>
+															<p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{project.overview}</p>
+														</div>
+													)}
+
+													{/* View Website Button + Click hint */}
+													<div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-wrap items-center justify-between gap-3">
+														<span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
+															<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+																<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+															</svg>
+															Click to go back
+														</span>
+														{project.demoUrl && (
+															<a 
+																href={project.demoUrl}
+																target="_blank"
+																rel="noopener noreferrer"
+																onClick={(e) => e.stopPropagation()}
+																className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 font-medium shadow-lg hover:shadow-xl"
+															>
+																View Website
+																<svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+																	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+																</svg>
+															</a>
+														)}
+													</div>
+												</>
+											);
+										})()}
+
+										{/* Hover accent line */}
+										<div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white transform scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left"></div>
+									</div>
+								</div>
 							</div>
+						</div>
+
+
 
 							{/* Skills Row */}
 							<div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
