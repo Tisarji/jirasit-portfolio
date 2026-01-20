@@ -16,11 +16,11 @@ export default function Projects() {
 			image: <CalendarMonthIcon sx={{ fontSize: 48 }} />
 		},
 		{
-			title: "Portfolio Website",
-			description: "A minimal and elegant portfolio website showcasing projects and skills with a clean, responsive design.",
-			technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
-			github: "https://github.com/Tisarji/jirasit-portfolio",
-			demo: "https://your-portfolio.vercel.app",
+			title: "FDF - 42 School Project",
+			description: "A simplified 3D graphic representation of a wireframe model. Points are connected by lines to create terrain visualization using computer graphics techniques.",
+			technologies: ["C", "MiniLibX", "Graphics", "Makefile"],
+			github: "https://github.com/Tisarji/fdf-42cursus",
+			demo: "",
 			image: <WorkIcon sx={{ fontSize: 48 }} />
 		},
 		{

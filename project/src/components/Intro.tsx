@@ -42,12 +42,12 @@ export default function Intro() {
 				{/* Main Title with Enhanced Styling */}
 				<div className="space-y-6">
 					<div className="relative">
-						<h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-wider leading-none">
+						<h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-wider leading-tight pb-2">
 							<span className="block bg-gradient-to-r from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent animate-fadeInUp">
 								Jirasit
 							</span>
 							<span 
-								className="block font-light bg-gradient-to-l from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent animate-slideInRight"
+								className="block font-light bg-gradient-to-l from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent animate-slideInRight pb-2"
 								style={{animationDelay: '0.3s'}}
 							>
 								Karunwong
@@ -126,7 +126,7 @@ export default function Intro() {
 
 				{/* Status Indicator */}
 				<div 
-					className="flex justify-center mt-12 animate-fadeInUp"
+					className="flex justify-center mt-8 animate-fadeInUp"
 					style={{animationDelay: '1.2s'}}
 				>
 					<div className="inline-flex items-center gap-3 px-6 py-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-full">
@@ -152,10 +152,10 @@ export default function Intro() {
 			</div>
 
 			{/* Scroll Indicator */}
-			<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-				<div className="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-600">
+			<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
+				<div className="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600">
 					<span className="text-xs font-light tracking-wider">SCROLL</span>
-					<div className="w-px h-12 bg-gradient-to-b from-gray-400 to-transparent dark:from-gray-600"></div>
+					<div className="w-px h-6 bg-gradient-to-b from-gray-400 to-transparent dark:from-gray-600"></div>
 				</div>
 			</div>
 		</section>
