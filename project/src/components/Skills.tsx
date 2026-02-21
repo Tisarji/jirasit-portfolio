@@ -3,18 +3,19 @@
 import PaletteIcon from '@mui/icons-material/Palette';
 import StorageIcon from '@mui/icons-material/Storage';
 import BuildIcon from '@mui/icons-material/Build';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 
 export default function Skills() {
 	const skillCategories = [
 		{
-			title: "Frontend",
+			title: "Frontend & Mobile",
 			skills: [
 				"React, Next.js",
 				"React Native, Expo",
+				"Swift, iOS",
 				"Tailwind CSS, Sass",
 				"Ant Design, MUI, shadcn/ui",
 				"Redux, Zustand",
-				"Framer Motion",
 				"React Lifecycle, Hooks"
 			],
 			icon: <PaletteIcon sx={{ fontSize: 48 }} />
@@ -31,6 +32,19 @@ export default function Skills() {
 				"Microservices Arch."
 			],
 			icon: <StorageIcon sx={{ fontSize: 48 }} />
+		},
+		{
+			title: "Embedded & OS",
+			skills: [
+				"C, C++",
+				"Embedded Systems",
+				"OS Concepts",
+				"Data Structures",
+				"Robotics",
+				"IoT Devices",
+				"Hardware Integration"
+			],
+			icon: <PrecisionManufacturingIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Tools & Others",
@@ -55,7 +69,7 @@ export default function Skills() {
 				<div className="absolute bottom-10 right-1/4 w-48 h-48 bg-black/3 dark:bg-white/3 rounded-full blur-3xl"></div>
 			</div>
 
-			<div className="max-w-6xl mx-auto">
+			<div className="w-full px-4 md:px-8">
 				<div className="text-center mb-16 space-y-4">
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Skills & Expertise
@@ -66,7 +80,7 @@ export default function Skills() {
 					</p>
 				</div>
 				
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{skillCategories.map((category, index) => (
 						<div key={index} className="group space-y-6 p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
 							<div className="text-center space-y-4">
