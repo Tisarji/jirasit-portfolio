@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Career from "@/components/Career";
 import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
 	return (
@@ -46,6 +47,12 @@ export default function Home() {
 					<section id="projects" className="py-20">
 						<div className="px-6 md:px-8">
 							<Projects />
+						</div>
+					</section>
+
+					<section id="gallery" className="py-20">
+						<div className="px-6 md:px-8">
+							<Gallery />
 						</div>
 					</section>
 					
