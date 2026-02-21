@@ -8,17 +8,41 @@ export default function Skills() {
 	const skillCategories = [
 		{
 			title: "Frontend",
-			skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
+			skills: [
+				"React, Next.js",
+				"React Native, Expo",
+				"Tailwind CSS, Sass",
+				"Ant Design, MUI, shadcn/ui",
+				"Redux, Zustand",
+				"Framer Motion",
+				"React Lifecycle, Hooks"
+			],
 			icon: <PaletteIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Backend",
-			skills: ["Node.js", "Express.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"],
+			skills: [
+				"Node.js, Express, Fastify",
+				"NestJS, Go, Python",
+				"PostgreSQL, MySQL, SQLite",
+				"Oracle, MSSQL, MongoDB",
+				"Redis, Prisma, TypeORM",
+				"REST API, RESTful API",
+				"Microservices Arch."
+			],
 			icon: <StorageIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Tools & Others",
-			skills: ["Vscode, Vim","Git", "Docker", "Figma", "Linux", "Agile"],
+			skills: [
+				"VSCode, Vim",
+				"Draw.io, Figma",
+				"Git CLI, Fork",
+				"Navicat, pgAdmin, DBeaver",
+				"Agile, Waterfall Model",
+				"Docker, AWS",
+				"Notion, Obsidian, Markdown"
+			],
 			icon: <BuildIcon sx={{ fontSize: 48 }} />
 		}
 	];
