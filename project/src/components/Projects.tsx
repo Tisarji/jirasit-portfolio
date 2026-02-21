@@ -42,7 +42,7 @@ export default function Projects() {
 	];
 
 	return (
-		<section id="projects" className="py-20 bg-gray-50/30 dark:bg-gray-900/30">
+		<section id="projects" className="py-20">
 			<div className="max-w-7xl mx-auto">
 				<div className="text-center mb-16 space-y-4">
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">

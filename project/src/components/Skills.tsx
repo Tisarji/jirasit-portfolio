@@ -37,11 +37,11 @@ export default function Skills() {
 			title: "Embedded & OS",
 			skills: [
 				"C, C++",
-				"Embedded Systems",
-				"OS Concepts",
-				"Data Structures",
+				"Embedded System",
+				"OS Concept",
+				"Data Structure",
 				"Robotics",
-				"IoT Devices",
+				"IoT Device",
 				"Hardware Integration"
 			],
 			icon: <PrecisionManufacturingIcon sx={{ fontSize: 48 }} />
@@ -111,11 +111,14 @@ export default function Skills() {
 
 				{/* Additional Skills Section */}
 				<div className="mt-20 text-center">
-					<h3 className="text-2xl font-light mb-8 text-black dark:text-white">
+					<h3 className="text-2xl font-light mb-4 text-black dark:text-white">
 						Always Learning
 					</h3>
-					<div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-						{["GraphQL", "Redis", "Kubernetes", "Machine Learning", "React Native", "Vue.js", "Prisma", "Supabase"].map((skill, index) => (
+					<p className="text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed mb-8">
+						I am currently focusing my efforts heavily on Artificial Intelligence, expanding my expertise in smart applications, model integrations, and data-driven systems.
+					</p>
+					<div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+						{["Large Language Models (LLMs)", "Retrieval-Augmented Generation (RAG)", "Machine Learning", "Deep Learning", "Generative AI", "Natural Language Processing (NLP)", "Computer Vision", "Prompt Engineering"].map((skill, index) => (
 							<span 
 								key={index}
 								className="px-6 py-3 text-sm font-medium bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all duration-300 cursor-default"
