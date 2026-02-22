@@ -35,11 +35,27 @@ export default function Gallery() {
 		{ id: 11, title: "Robotics Class 1", category: "Mentoring", src: "/images/lecture-student-about-robot-1.JPG", type: "image", action: "none" },
 		{ id: 12, title: "Hackathon Staff 2", category: "Event Management", src: "/images/staff-hackathon-2.jpg", type: "image", action: "none" },
 		{ id: 13, title: "Teaching C", category: "Mentoring", src: "/images/teaching-friend-in-c.JPG", type: "image", action: "none" },
+		{ id: 26, title: "Internship Life 1", category: "Internship", src: "/images/internship-1.JPG", type: "image", action: "none" },
+		{ id: 32, title: "Internship Life 6", category: "Internship", src: "/images/internship-6.JPG", type: "image", action: "none" },
+		{ id: 28, title: "Internship Life 2", category: "Internship", src: "/images/internship-2.JPG", type: "image", action: "none" },
+		{ id: 29, title: "Internship Life 3", category: "Internship", src: "/images/internship-3.JPG", type: "image", action: "none" },
+		{ id: 30, title: "Internship Life 4", category: "Internship", src: "/images/internship-4.JPG", type: "image", action: "none" },
+		{ id: 31, title: "Internship Life 5", category: "Internship", src: "/images/internship-5.JPG", type: "image", action: "none" },
+		{ id: 33, title: "Internship Life 7", category: "Internship", src: "/images/internship-7.JPG", type: "image", action: "none" },
+		{ id: 34, title: "Internship Life 8", category: "Internship", src: "/images/internship-8.JPG", type: "image", action: "none" },
+		{ id: 27, title: "Internship Outing 1", category: "Internship", src: "/images/internship-outing-1.JPG", type: "image", action: "none" },
+		{ id: 35, title: "Internship Outing 2", category: "Internship", src: "/images/internship-outing-2.JPG", type: "image", action: "none" },
+		{ id: 36, title: "Internship Outing 3", category: "Internship", src: "/images/internship-outing-3.JPG", type: "image", action: "none" },
+		{ id: 37, title: "Internship Outing 4", category: "Internship", src: "/images/internship-outing-4.JPG", type: "image", action: "none" },
 		{ id: 15, title: "Push Swap", category: "42 School Project", src: "/images/push-swap.png", type: "image", action: "github", link: "https://github.com/Tisarji/push-swap-42cursus" },
 		{ id: 16, title: "Landing Page Sati 1", category: "Web Design", src: "/images/landing-page-sati-01.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
 		{ id: 17, title: "Landing Page Sati 2", category: "Web Design", src: "/images/landing-page-sati-02.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
 		{ id: 18, title: "Hackathon Competitor 4", category: "University Hackathon", src: "/images/uni-hackathon-4.JPG", type: "image", action: "none" },
-		{ id: 19, title: "Robotics Class 2", category: "Mentoring", src: "/images/lecture-student-about-robot-2.JPG", type: "image", action: "none" }
+		{ id: 19, title: "Robotics Class 2", category: "Mentoring", src: "/images/lecture-student-about-robot-2.JPG", type: "image", action: "none" },
+		{ id: 39, title: "Robotics Class 3", category: "Mentoring", src: "/images/lecture-student-about-robot-3.JPG", type: "image", action: "none" },
+		{ id: 40, title: "Robotics Class 4", category: "Mentoring", src: "/images/lecture-student-about-robot-4.JPG", type: "image", action: "none" },
+		{ id: 41, title: "Robotics Class 5", category: "Mentoring", src: "/images/lecture-student-about-robot-5.JPG", type: "image", action: "none" },
+		{ id: 42, title: "Activities Video", category: "Event Management", src: "/images/video_591131406516879706-eln87HBG.MP4", type: "video", action: "none" }
 	];
 
 	const handleItemClick = (item: typeof mediaItems[0]) => {
@@ -63,12 +79,12 @@ export default function Gallery() {
 					</p>
 				</div>
 
-				{/* Masonry Layout */}
-				<div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+				{/* CSS Masonry Layout */}
+				<div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
 					{mediaItems.map((item, index) => (
 						<div 
 							key={item.id}
-							className="break-inside-avoid relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer"
+							className="break-inside-avoid mb-6 relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer"
 							onMouseEnter={() => setHoveredIndex(index)}
 							onMouseLeave={() => setHoveredIndex(null)}
 							onClick={() => handleItemClick(item)}
