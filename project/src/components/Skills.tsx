@@ -10,52 +10,52 @@ export default function Skills() {
 		{
 			title: "Frontend & Mobile",
 			skills: [
-				"React, Next.js",
-				"React Native, Expo",
-				"Swift, iOS",
-				"Tailwind CSS, Sass",
-				"Ant Design, MUI, shadcn/ui",
-				"Redux, Zustand",
-				"React Lifecycle, Hooks"
+				{ name: "React, Next.js", level: 3 },
+				{ name: "React Native, Expo", level: 2 },
+				{ name: "Swift, iOS", level: 1 },
+				{ name: "Tailwind CSS, Sass", level: 3 },
+				{ name: "Ant Design, MUI", level: 3 },
+				{ name: "Redux, Hooks", level: 3 },
+				{ name: "React Lifecycle", level: 2 }
 			],
 			icon: <PaletteIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Backend",
 			skills: [
-				"Node.js, Express, Fastify",
-				"NestJS, Go, Python",
-				"PostgreSQL, MySQL, SQLite",
-				"Oracle, MSSQL, MongoDB",
-				"Redis, Prisma, TypeORM",
-				"REST API, RESTful API",
-				"Microservices Arch."
+				{ name: "Node.js, Express", level: 3 },
+				{ name: "NestJS, Go, Python", level: 3 },
+				{ name: "PostgreSQL, MySQL", level: 2 },
+				{ name: "Oracle, MSSQL", level: 2 },
+				{ name: "Redis, Prisma", level: 2 },
+				{ name: "REST API", level: 3 },
+				{ name: "Microservices Arch.", level: 3 }
 			],
 			icon: <StorageIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Embedded & OS",
 			skills: [
-				"C, C++",
-				"Embedded System",
-				"OS Concept",
-				"Data Structure",
-				"Robotics",
-				"IoT Device",
-				"Hardware Integration"
+				{ name: "C, C++", level: 3 },
+				{ name: "Embedded Systems", level: 3 },
+				{ name: "OS Concepts", level: 3 },
+				{ name: "Data Structures", level: 3 },
+				{ name: "Robotics", level: 3 },
+				{ name: "IoT Devices", level: 2 },
+				{ name: "Hardware Integration", level: 2 }
 			],
 			icon: <PrecisionManufacturingIcon sx={{ fontSize: 48 }} />
 		},
 		{
 			title: "Tools & Others",
 			skills: [
-				"VSCode, Vim",
-				"Draw.io, Figma",
-				"Git CLI, Fork",
-				"Navicat, pgAdmin, DBeaver",
-				"Agile, Waterfall Model",
-				"Docker, AWS",
-				"Notion, Obsidian, Markdown"
+				{ name: "VSCode, Vim", level: 3 },
+				{ name: "Draw.io, Figma", level: 3 },
+				{ name: "Git CLI, Fork", level: 3 },
+				{ name: "Navicat, DBeaver", level: 3 },
+				{ name: "Agile, Waterfall", level: 3 },
+				{ name: "Docker, AWS", level: 3 },
+				{ name: "Notion, Obsidian", level: 3 }
 			],
 			icon: <BuildIcon sx={{ fontSize: 48 }} />
 		}
@@ -78,6 +78,34 @@ export default function Skills() {
 					<p className="text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						Technologies and tools I use to bring ideas to life
 					</p>
+					
+					{/* Legend for Skill Levels */}
+					<div className="flex justify-center items-center gap-6 mt-8 pt-6">
+						<div className="flex items-center gap-2">
+							<div className="flex gap-1">
+								<div className="w-2 h-2 rounded-full bg-red-500"></div>
+								<div className="w-2 h-2 rounded-full bg-gray-200 dark:bg-gray-800"></div>
+								<div className="w-2 h-2 rounded-full bg-gray-200 dark:bg-gray-800"></div>
+							</div>
+							<span className="text-xs text-gray-500 uppercase tracking-wider">Familiar</span>
+						</div>
+						<div className="flex items-center gap-2">
+							<div className="flex gap-1">
+								<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+								<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+								<div className="w-2 h-2 rounded-full bg-gray-200 dark:bg-gray-800"></div>
+							</div>
+							<span className="text-xs text-gray-500 uppercase tracking-wider">Proficient</span>
+						</div>
+						<div className="flex items-center gap-2">
+							<div className="flex gap-1">
+								<div className="w-2 h-2 rounded-full bg-green-500"></div>
+								<div className="w-2 h-2 rounded-full bg-green-500"></div>
+								<div className="w-2 h-2 rounded-full bg-green-500"></div>
+							</div>
+							<span className="text-xs text-gray-500 uppercase tracking-wider">Expert</span>
+						</div>
+					</div>
 				</div>
 				
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -96,10 +124,30 @@ export default function Skills() {
 							<div className="space-y-3">
 								{category.skills.map((skill, skillIndex) => (
 									<div key={skillIndex} className="group/skill">
-										<div className="p-4 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-300 text-center relative overflow-hidden">
-											<span className="relative z-10 text-gray-700 dark:text-gray-300 group-hover/skill:text-black dark:group-hover/skill:text-white transition-colors duration-300 font-medium">
-												{skill}
+										<div className="p-4 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-300 flex justify-between items-center relative overflow-hidden">
+											<span className="relative z-10 text-gray-700 dark:text-gray-300 group-hover/skill:text-black dark:group-hover/skill:text-white transition-colors duration-300 font-medium text-sm">
+												{skill.name}
 											</span>
+											
+											{/* Skill Level Indicator */}
+											<div className="flex gap-1 relative z-10">
+												{[1, 2, 3].map((levelIndicator) => {
+													let dotColor = 'bg-gray-200 dark:bg-gray-800';
+													if (levelIndicator <= skill.level) {
+														if (skill.level === 3) dotColor = 'bg-green-500';
+														else if (skill.level === 2) dotColor = 'bg-yellow-500';
+														else if (skill.level === 1) dotColor = 'bg-red-500';
+													}
+
+													return (
+														<div 
+															key={levelIndicator} 
+															className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${dotColor}`}
+														></div>
+													);
+												})}
+											</div>
+											
 											<div className="absolute inset-0 bg-gray-50 dark:bg-gray-800 transform scale-x-0 group-hover/skill:scale-x-100 transition-transform duration-300 origin-left"></div>
 										</div>
 									</div>
