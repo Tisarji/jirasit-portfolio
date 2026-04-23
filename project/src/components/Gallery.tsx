@@ -1,156 +1,253 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import EmailIcon from "@mui/icons-material/Email";
+import LaunchIcon from "@mui/icons-material/Launch";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+
+type MediaAction = "github" | "request" | "view" | "none";
+
+type MediaItem = {
+	id: number;
+	title: string;
+	category: string;
+	src: string;
+	type: "image" | "video";
+	action: MediaAction;
+	link?: string;
+};
+
+const mediaItems: MediaItem[] = [
+	{ id: 1, title: "FdF", category: "42 School Project", src: "/images/fdf.png", type: "image", action: "github", link: "https://github.com/Tisarji/fdf-42cursus" },
+	{ id: 2, title: "FdF in Action", category: "42 School Project", src: "/images/fdf3-doing.MOV", type: "video", action: "none" },
+	{ id: 25, title: "Minishell in Action", category: "42 School Project", src: "/images/minishell-doing.MOV", type: "video", action: "none" },
+	{ id: 3, title: "Class Lecture", category: "Mentoring", src: "/images/lecture-student-about-class.JPG", type: "image", action: "none" },
+	{ id: 24, title: "Class Lecture (DSR)", category: "Mentoring", src: "/images/lecture-dsr.JPG", type: "image", action: "none" },
+	{ id: 14, title: "Hackathon Competitor 3", category: "Hackathon", src: "/images/uni-hackathon-3.JPG", type: "image", action: "none" },
+	{ id: 4, title: "Hackathon Staff", category: "Hackathon", src: "/images/staff-hackathon-1.jpg", type: "image", action: "none" },
+	{ id: 5, title: "TA KMITL", category: "Mentoring", src: "/images/tutor-kmitl.jpg", type: "image", action: "none" },
+	{ id: 21, title: "Internal ERP Demo 2", category: "Professional Work", src: "/images/internal-erp-system-2.MOV", type: "video", action: "none" },
+	{ id: 22, title: "Booking System 1", category: "Professional Work", src: "/images/booking-system-1.JPG", type: "image", action: "none" },
+	{ id: 23, title: "Booking System 2", category: "Professional Work", src: "/images/booking-system-2.JPG", type: "image", action: "none" },
+	{ id: 7, title: "Hackathon Competitor 2", category: "Hackathon", src: "/images/uni-hackathon-2.JPG", type: "image", action: "none" },
+	{ id: 8, title: "FdF in Action 2", category: "42 School Project", src: "/images/fdf2-doing.MOV", type: "video", action: "none" },
+	{
+		id: 9,
+		title: "Internal ERP System",
+		category: "Professional Work",
+		src: "/images/Internal-erp-system.png",
+		type: "image",
+		action: "request",
+		link: "mailto:jirasitkarunwong@gmail.com?subject=ERP%20Demo%20Request",
+	},
+	{ id: 20, title: "Internal ERP Demo 1", category: "Professional Work", src: "/images/internal-erp-system-1.MOV", type: "video", action: "none" },
+	{ id: 6, title: "Hackathon Competitor 1", category: "Hackathon", src: "/images/uni-hackathon-1.JPG", type: "image", action: "none" },
+	{ id: 10, title: "Hackathon Vibe", category: "Hackathon", src: "/images/staff-hackathon-3.MOV", type: "video", action: "none" },
+	{ id: 11, title: "Robotics Class 1", category: "Mentoring", src: "/images/lecture-student-about-robot-1.JPG", type: "image", action: "none" },
+	{ id: 12, title: "Hackathon Staff 2", category: "Hackathon", src: "/images/staff-hackathon-2.jpg", type: "image", action: "none" },
+	{ id: 13, title: "Teaching C", category: "Mentoring", src: "/images/teaching-friend-in-c.JPG", type: "image", action: "none" },
+	{ id: 26, title: "Internship Life 1", category: "Internship", src: "/images/internship-1.JPG", type: "image", action: "none" },
+	{ id: 32, title: "Internship Life 6", category: "Internship", src: "/images/internship-6.JPG", type: "image", action: "none" },
+	{ id: 28, title: "Internship Life 2", category: "Internship", src: "/images/internship-2.JPG", type: "image", action: "none" },
+	{ id: 29, title: "Internship Life 3", category: "Internship", src: "/images/internship-3.JPG", type: "image", action: "none" },
+	{ id: 30, title: "Internship Life 4", category: "Internship", src: "/images/internship-4.JPG", type: "image", action: "none" },
+	{ id: 31, title: "Internship Life 5", category: "Internship", src: "/images/internship-5.JPG", type: "image", action: "none" },
+	{ id: 33, title: "Internship Life 7", category: "Internship", src: "/images/internship-7.JPG", type: "image", action: "none" },
+	{ id: 34, title: "Internship Life 8", category: "Internship", src: "/images/internship-8.JPG", type: "image", action: "none" },
+	{ id: 27, title: "Internship Outing 1", category: "Internship", src: "/images/internship-outing-1.JPG", type: "image", action: "none" },
+	{ id: 35, title: "Internship Outing 2", category: "Internship", src: "/images/internship-outing-2.JPG", type: "image", action: "none" },
+	{ id: 36, title: "Internship Outing 3", category: "Internship", src: "/images/internship-outing-3.JPG", type: "image", action: "none" },
+	{ id: 37, title: "Internship Outing 4", category: "Internship", src: "/images/internship-outing-4.JPG", type: "image", action: "none" },
+	{ id: 15, title: "Push Swap", category: "42 School Project", src: "/images/push-swap.png", type: "image", action: "github", link: "https://github.com/Tisarji/push-swap-42cursus" },
+	{ id: 16, title: "Sati Landing Page", category: "Professional Work", src: "/images/landing-page-sati-01.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
+	{ id: 17, title: "Sati Landing Page 2", category: "Professional Work", src: "/images/landing-page-sati-02.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
+	{
+		id: 43,
+		title: "Songkran Online — AOT",
+		category: "Professional Work",
+		src: "/images/songkran-aot-scene.png",
+		type: "image",
+		action: "request",
+		link: "mailto:jirasitkarunwong@gmail.com?subject=Songkran%20Online%20(AOT)%20Inquiry",
+	},
+	{ id: 18, title: "Hackathon Competitor 4", category: "Hackathon", src: "/images/uni-hackathon-4.JPG", type: "image", action: "none" },
+	{ id: 19, title: "Robotics Class 2", category: "Mentoring", src: "/images/lecture-student-about-robot-2.JPG", type: "image", action: "none" },
+	{ id: 39, title: "Robotics Class 3", category: "Mentoring", src: "/images/lecture-student-about-robot-3.JPG", type: "image", action: "none" },
+	{ id: 40, title: "Robotics Class 4", category: "Mentoring", src: "/images/lecture-student-about-robot-4.JPG", type: "image", action: "none" },
+	{ id: 41, title: "Robotics Class 5", category: "Mentoring", src: "/images/lecture-student-about-robot-5.JPG", type: "image", action: "none" },
+	{ id: 42, title: "Activities Video", category: "Hackathon", src: "/images/video_591131406516879706-eln87HBG.MP4", type: "video", action: "none" },
+];
+
+const categories = [
+	"All",
+	"Professional Work",
+	"42 School Project",
+	"Hackathon",
+	"Mentoring",
+	"Internship",
+] as const;
+
+type Category = (typeof categories)[number];
+
+function ActionBadge({ action }: { action: MediaAction }) {
+	if (action === "none") return null;
+	const icon =
+		action === "github" ? (
+			<GitHubIcon sx={{ fontSize: 14 }} />
+		) : action === "request" ? (
+			<EmailIcon sx={{ fontSize: 14 }} />
+		) : (
+			<LaunchIcon sx={{ fontSize: 14 }} />
+		);
+	const label =
+		action === "github" ? "View code" : action === "request" ? "Request demo" : "Visit site";
+	return (
+		<div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black text-xs font-semibold rounded-full shadow-lg">
+			{icon}
+			{label}
+		</div>
+	);
+}
 
 export default function Gallery() {
+	const [activeCategory, setActiveCategory] = useState<Category>("All");
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-	const mediaItems: {
-		id: number;
-		title: string;
-		category: string;
-		src: string;
-		type: "image" | "video";
-		action: "github" | "request" | "view" | "none";
-		link?: string;
-	}[] = [
-		{ id: 1, title: "FdF", category: "42 School Project", src: "/images/fdf.png", type: "image", action: "github", link: "https://github.com/Tisarji/fdf-42cursus" },
-		{ id: 2, title: "FdF in Action", category: "Project Demo", src: "/images/fdf3-doing.MOV", type: "video", action: "none" },
-		{ id: 25, title: "Minishell in Action", category: "Project Demo", src: "/images/minishell-doing.MOV", type: "video", action: "none" },
-		{ id: 3, title: "Class Lecture", category: "Mentoring", src: "/images/lecture-student-about-class.JPG", type: "image", action: "none" },
-		{ id: 24, title: "Class Lecture (DSR)", category: "Mentoring", src: "/images/lecture-dsr.JPG", type: "image", action: "none" },
-		{ id: 14, title: "Hackathon Competitor 3", category: "University Hackathon", src: "/images/uni-hackathon-3.JPG", type: "image", action: "none" },
-		{ id: 4, title: "Hackathon Staff", category: "Event Management", src: "/images/staff-hackathon-1.jpg", type: "image", action: "none" },
-		{ id: 5, title: "TA KMITL", category: "TA & Tutoring", src: "/images/tutor-kmitl.jpg", type: "image", action: "none" },
-		{ id: 21, title: "Internal ERP Demo 2", category: "Web Application", src: "/images/internal-erp-system-2.MOV", type: "video", action: "none" },
-		{ id: 22, title: "Booking System 1", category: "Web Application", src: "/images/booking-system-1.JPG", type: "image", action: "none" },
-		{ id: 23, title: "Booking System 2", category: "Web Application", src: "/images/booking-system-2.JPG", type: "image", action: "none" },
-		{ id: 7, title: "Hackathon Competitor 2", category: "University Hackathon", src: "/images/uni-hackathon-2.JPG", type: "image", action: "none" },
-		{ id: 8, title: "FdF in Action 2", category: "Project Demo", src: "/images/fdf2-doing.MOV", type: "video", action: "none" },
-		{ id: 9, title: "Internal ERP System", category: "Web Application", src: "/images/Internal-erp-system.png", type: "image", action: "request", link: "mailto:jirast.dev@gmail.com?subject=Request%20ERP%20Demo" },
-		{ id: 20, title: "Internal ERP Demo 1", category: "Web Application", src: "/images/internal-erp-system-1.MOV", type: "video", action: "none" },
-		{ id: 6, title: "Hackathon Competitor 1", category: "University Hackathon", src: "/images/uni-hackathon-1.JPG", type: "image", action: "none" },
-		{ id: 10, title: "Hackathon Vibe", category: "Event Management", src: "/images/staff-hackathon-3.MOV", type: "video", action: "none" },
-		{ id: 11, title: "Robotics Class 1", category: "Mentoring", src: "/images/lecture-student-about-robot-1.JPG", type: "image", action: "none" },
-		{ id: 12, title: "Hackathon Staff 2", category: "Event Management", src: "/images/staff-hackathon-2.jpg", type: "image", action: "none" },
-		{ id: 13, title: "Teaching C", category: "Mentoring", src: "/images/teaching-friend-in-c.JPG", type: "image", action: "none" },
-		{ id: 26, title: "Internship Life 1", category: "Internship", src: "/images/internship-1.JPG", type: "image", action: "none" },
-		{ id: 32, title: "Internship Life 6", category: "Internship", src: "/images/internship-6.JPG", type: "image", action: "none" },
-		{ id: 28, title: "Internship Life 2", category: "Internship", src: "/images/internship-2.JPG", type: "image", action: "none" },
-		{ id: 29, title: "Internship Life 3", category: "Internship", src: "/images/internship-3.JPG", type: "image", action: "none" },
-		{ id: 30, title: "Internship Life 4", category: "Internship", src: "/images/internship-4.JPG", type: "image", action: "none" },
-		{ id: 31, title: "Internship Life 5", category: "Internship", src: "/images/internship-5.JPG", type: "image", action: "none" },
-		{ id: 33, title: "Internship Life 7", category: "Internship", src: "/images/internship-7.JPG", type: "image", action: "none" },
-		{ id: 34, title: "Internship Life 8", category: "Internship", src: "/images/internship-8.JPG", type: "image", action: "none" },
-		{ id: 27, title: "Internship Outing 1", category: "Internship", src: "/images/internship-outing-1.JPG", type: "image", action: "none" },
-		{ id: 35, title: "Internship Outing 2", category: "Internship", src: "/images/internship-outing-2.JPG", type: "image", action: "none" },
-		{ id: 36, title: "Internship Outing 3", category: "Internship", src: "/images/internship-outing-3.JPG", type: "image", action: "none" },
-		{ id: 37, title: "Internship Outing 4", category: "Internship", src: "/images/internship-outing-4.JPG", type: "image", action: "none" },
-		{ id: 15, title: "Push Swap", category: "42 School Project", src: "/images/push-swap.png", type: "image", action: "github", link: "https://github.com/Tisarji/push-swap-42cursus" },
-		{ id: 16, title: "Landing Page Sati 1", category: "Web Design", src: "/images/landing-page-sati-01.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
-		{ id: 17, title: "Landing Page Sati 2", category: "Web Design", src: "/images/landing-page-sati-02.png", type: "image", action: "view", link: "https://www.sati.co.th/" },
-		{ id: 18, title: "Hackathon Competitor 4", category: "University Hackathon", src: "/images/uni-hackathon-4.JPG", type: "image", action: "none" },
-		{ id: 19, title: "Robotics Class 2", category: "Mentoring", src: "/images/lecture-student-about-robot-2.JPG", type: "image", action: "none" },
-		{ id: 39, title: "Robotics Class 3", category: "Mentoring", src: "/images/lecture-student-about-robot-3.JPG", type: "image", action: "none" },
-		{ id: 40, title: "Robotics Class 4", category: "Mentoring", src: "/images/lecture-student-about-robot-4.JPG", type: "image", action: "none" },
-		{ id: 41, title: "Robotics Class 5", category: "Mentoring", src: "/images/lecture-student-about-robot-5.JPG", type: "image", action: "none" },
-		{ id: 42, title: "Activities Video", category: "Event Management", src: "/images/video_591131406516879706-eln87HBG.MP4", type: "video", action: "none" }
-	];
+	const filteredItems = useMemo(
+		() =>
+			activeCategory === "All"
+				? mediaItems
+				: mediaItems.filter((i) => i.category === activeCategory),
+		[activeCategory]
+	);
 
-	const handleItemClick = (item: typeof mediaItems[0]) => {
-		if (item.link && item.link !== "#") {
-			window.open(item.link, '_blank');
-		} else if (item.action === "request" && item.link) {
-			window.location.href = item.link;
+	const handleItemClick = (item: MediaItem) => {
+		if (item.link && item.action !== "none") {
+			if (item.action === "request") window.location.href = item.link;
+			else window.open(item.link, "_blank", "noopener,noreferrer");
 		}
 	};
 
+	const categoryCount = (cat: Category) =>
+		cat === "All" ? mediaItems.length : mediaItems.filter((i) => i.category === cat).length;
+
 	return (
-		<section id="gallery" className="py-20">
-			<div className="w-full px-4 md:px-8">
-				<div className="text-center mb-16 space-y-4">
+		<section id="gallery" className="py-20 md:py-28 px-6 md:px-8">
+			<div className="max-w-7xl mx-auto">
+				<div className="text-center mb-12 space-y-4">
+					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
+						Moments & Work
+					</p>
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-						Work & Activities Gallery
+						Gallery
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto"></div>
-					<p className="text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-						Visual showcases of some selected projects, design works, and community engagements
+					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+						A visual tour of the projects, events, and people behind the code.
 					</p>
 				</div>
 
-				{/* CSS Masonry Layout */}
-				<div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
-					{mediaItems.map((item, index) => (
-						<div 
-							key={item.id}
-							className="break-inside-avoid mb-6 relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer"
-							onMouseEnter={() => setHoveredIndex(index)}
-							onMouseLeave={() => setHoveredIndex(null)}
-							onClick={() => handleItemClick(item)}
-						>
-							<div className="w-full h-auto relative bg-black/5 dark:bg-white/5">
-								{item.type === 'video' ? (
-									<video 
-										src={item.src}
-										autoPlay 
-										loop 
-										muted 
-										playsInline
-										className={`w-full h-auto object-cover transition-all duration-700 ease-in-out ${hoveredIndex === index ? 'scale-110 blur-sm' : 'scale-100'}`}
-									/>
-								) : (
-									<Image 
-										src={item.src}
-										alt={item.title}
-										width={800} // arbitrary high size for preserving detail
-										height={800} // arbitrary high size
-										className={`w-full h-auto object-cover transition-all duration-700 ease-in-out ${hoveredIndex === index ? 'scale-110 blur-sm' : 'scale-100'}`}
-										sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-									/>
-								)}
-							</div>
-							
-							{/* Overlay */}
-							<div className={`absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-500 ease-in-out ${hoveredIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-								<span className="text-xs font-semibold text-gray-300 tracking-widest uppercase mb-2 transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
-									{item.category}
+				{/* Category filters */}
+				<div className="flex flex-wrap justify-center gap-2 mb-10">
+					{categories.map((cat) => {
+						const isActive = activeCategory === cat;
+						return (
+							<button
+								key={cat}
+								onClick={() => setActiveCategory(cat)}
+								className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${
+									isActive
+										? "bg-black text-white dark:bg-white dark:text-black border-black dark:border-white shadow-md"
+										: "bg-transparent text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white"
+								}`}
+							>
+								<span>{cat}</span>
+								<span
+									className={`text-xs ${
+										isActive
+											? "text-white/70 dark:text-black/70"
+											: "text-gray-400 dark:text-gray-600"
+									}`}
+								>
+									{categoryCount(cat)}
 								</span>
-								<h3 className="text-xl md:text-2xl font-light text-white transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
-									{item.title}
-								</h3>
-								
-								{item.action !== "none" && (
-									<div className="mt-6 transform transition-all duration-500 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 flex items-center gap-2">
-										<div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors">
-											{item.action === "github" && (
-												<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-													<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-												</svg>
-											)}
-											{item.action === "request" && (
-												<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-												</svg>
-											)}
-											{item.action === "view" && (
-												<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-												</svg>
-											)}
-										</div>
-										<span className="text-white text-sm font-medium">
-											{item.action === "github" ? "View Code" : 
-											item.action === "request" ? "Request Demo" : 
-											"View Project"}
-										</span>
-									</div>
-								)}
-							</div>
-						</div>
-					))}
+							</button>
+						);
+					})}
 				</div>
+
+				{/* Masonry grid */}
+				<div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
+					{filteredItems.map((item, index) => {
+						const isHovered = hoveredIndex === index;
+						const isClickable = item.action !== "none";
+						return (
+							<div
+								key={item.id}
+								className={`break-inside-avoid mb-4 relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-500 ${
+									isClickable ? "cursor-pointer" : "cursor-default"
+								}`}
+								onMouseEnter={() => setHoveredIndex(index)}
+								onMouseLeave={() => setHoveredIndex(null)}
+								onClick={() => handleItemClick(item)}
+							>
+								<div className="relative bg-black/5 dark:bg-white/5">
+									{item.type === "video" ? (
+										<>
+											<video
+												src={item.src}
+												autoPlay
+												loop
+												muted
+												playsInline
+												className={`w-full h-auto object-cover transition-all duration-700 ${
+													isHovered ? "scale-105 blur-sm" : "scale-100"
+												}`}
+											/>
+											<div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white pointer-events-none">
+												<PlayCircleOutlineIcon sx={{ fontSize: 18 }} />
+											</div>
+										</>
+									) : (
+										<Image
+											src={item.src}
+											alt={item.title}
+											width={800}
+											height={800}
+											className={`w-full h-auto object-cover transition-all duration-700 ${
+												isHovered ? "scale-105 blur-sm" : "scale-100"
+											}`}
+											sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+										/>
+									)}
+								</div>
+
+								{/* Overlay on hover */}
+								<div
+									className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 flex flex-col justify-end p-5 transition-opacity duration-500 ${
+										isHovered ? "opacity-100" : "opacity-0"
+									}`}
+								>
+									<span className="text-[11px] font-semibold text-gray-300 tracking-widest uppercase mb-1.5">
+										{item.category}
+									</span>
+									<h3 className="text-lg md:text-xl font-medium text-white mb-3 leading-tight">
+										{item.title}
+									</h3>
+									{isClickable && <ActionBadge action={item.action} />}
+								</div>
+							</div>
+						);
+					})}
+				</div>
+
+				{filteredItems.length === 0 && (
+					<p className="text-center text-gray-500 dark:text-gray-500 mt-12">
+						No items in this category yet.
+					</p>
+				)}
 			</div>
 		</section>
 	);

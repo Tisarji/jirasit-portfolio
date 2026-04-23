@@ -36,12 +36,14 @@ export default function Footer() {
 	const quickLinks = [
 		{ name: "About", href: "#about" },
 		{ name: "Skills", href: "#skills" },
+		{ name: "Career", href: "#career" },
 		{ name: "Projects", href: "#projects" },
-		{ name: "Contact", href: "#contact" }
+		{ name: "Gallery", href: "#gallery" },
+		{ name: "Top", href: "#" }
 	];
 
 	return (
-		<footer className="relative overflow-hidden">
+		<footer id="contact" className="relative overflow-hidden">
 			{/* Background Effects */}
 			<div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/30 to-gray-100/50 dark:via-gray-900/30 dark:to-gray-800/50"></div>
 			<div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>

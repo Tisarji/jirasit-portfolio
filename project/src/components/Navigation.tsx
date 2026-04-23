@@ -11,6 +11,7 @@ export default function Navigation() {
 		{ name: "Skills", href: "#skills" },
 		{ name: "Career", href: "#career" },
 		{ name: "Projects", href: "#projects" },
+		{ name: "Gallery", href: "#gallery" },
 		{ name: "Contact", href: "#contact" }
 	];
 
@@ -115,11 +116,11 @@ export default function Navigation() {
 						<div className="pt-4 mt-4 border-t border-gray-200/60 dark:border-gray-800/60">
 							<div className="px-4 py-2">
 								<p className="text-sm text-gray-500 dark:text-gray-500 font-medium mb-2">Get in touch</p>
-								<a 
-									href="mailto:jirasit.dev@gmail.com"
+								<a
+									href="mailto:jirasitkarunwong@gmail.com"
 									className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
 								>
-									jirasit.dev@gmail.com
+									jirasitkarunwong@gmail.com
 								</a>
 							</div>
 						</div>

@@ -12,54 +12,24 @@ export default function Home() {
 		<>
 			<Navigation />
 			<main className="relative">
-				{/* Background Pattern */}
-				<div className="fixed inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
-					<div className="absolute inset-0" style={{
-						backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-						backgroundSize: '20px 20px'
-					}}></div>
+				{/* Subtle dot pattern */}
+				<div className="fixed inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none -z-10">
+					<div
+						className="absolute inset-0"
+						style={{
+							backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+							backgroundSize: "20px 20px",
+						}}
+					/>
 				</div>
-				
-				{/* Page Sections */}
-				<div className="relative z-10">
-					<section className="min-h-screen">
-						<Intro />
-					</section>
-					
-					<section id="about" className="py-20">
-						<div className="px-6 md:px-8">
-							<About />
-						</div>
-					</section>
-					
-					<section id="skills" className="py-20">
-						<div className="px-6 md:px-8">
-							<Skills />
-						</div>
-					</section>
-					
-					<section id="career" className="py-20">
-						<div className="px-6 md:px-8">
-							<Career />
-						</div>
-					</section>
-					
-					<section id="projects" className="py-20">
-						<div className="px-6 md:px-8">
-							<Projects />
-						</div>
-					</section>
 
-					<section id="gallery" className="py-20">
-						<div className="px-6 md:px-8">
-							<Gallery />
-						</div>
-					</section>
-					
-					<section id="contact" className="pt-20">
-						<Footer />
-					</section>
-				</div>
+				<Intro />
+				<About />
+				<Skills />
+				<Career />
+				<Projects />
+				<Gallery />
+				<Footer />
 			</main>
 		</>
 	);

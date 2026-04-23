@@ -1,140 +1,319 @@
 "use client";
 
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import WorkIcon from '@mui/icons-material/Work';
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
-import PsychologyIcon from '@mui/icons-material/Psychology';
+import Image from "next/image";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LaunchIcon from "@mui/icons-material/Launch";
+import TerrainIcon from "@mui/icons-material/Terrain";
+import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
+import PsychologyIcon from "@mui/icons-material/Psychology";
 
-export default function Projects() {
-	const projects = [
-		{
-			title: "Reserve - Booking System",
-			description: "A comprehensive booking system for managing reservations, featuring user authentication, calendar integration, and real-time notifications.",
-			technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-			github: "https://github.com/Tisarji/Reserve-Project",
-			demo: "https://your-ecommerce-demo.vercel.app",
-			image: <CalendarMonthIcon sx={{ fontSize: 48 }} />
-		},
-		{
-			title: "FDF - 42 School Project",
-			description: "A simplified 3D graphic representation of a wireframe model. Points are connected by lines to create terrain visualization using computer graphics techniques.",
-			technologies: ["C", "MiniLibX", "Graphics", "Makefile"],
-			github: "https://github.com/Tisarji/fdf-42cursus",
-			demo: "",
-			image: <WorkIcon sx={{ fontSize: 48 }} />
-		},
-		{
-			title: "Push Swap - 42 School Project",
-			description: "An efficient sorting algorithm implementation using C, designed to handle large datasets with minimal memory usage.",
-			technologies: ["C", "Algorithms", "Stack Operations", "Makefile"],
-			github: "https://github.com/Tisarji/push-swap-42cursus",
-			demo: "https://your-weather-app.vercel.app",
-			image: <SwapHorizIcon sx={{ fontSize: 48 }} />
-		},
-		{
-			title: "Philosopher - 42 School Project",
-			description: "A collaborative platform for 42 School students to share and discuss philosophical topics, featuring user profiles, discussion threads, and a voting system.",
-			technologies: ["C", "Threading", "Mutex", "Semaphores"],
-			github: "https://github.com/Tisarji/philosopher-42cursus",
-			demo: "https://your-task-manager.vercel.app",
-			image: <PsychologyIcon sx={{ fontSize: 48 }} />
-		}
-	];
+type ActionType = "github" | "website" | "email";
 
+type Project = {
+	title: string;
+	tagline: string;
+	plainDescription: string;
+	role: string;
+	image?: string;
+	icon?: React.ReactNode;
+	tech: string[];
+	highlights?: string[];
+	primaryAction?: { type: ActionType; label: string; href: string };
+	secondaryAction?: { type: ActionType; label: string; href: string };
+};
+
+const professionalProjects: Project[] = [
+	{
+		title: "Songkran Online (AOT)",
+		tagline: "A virtual Thai New Year festival you can join from anywhere",
+		plainDescription:
+			"A web app I built as a freelance project for Airports of Thailand (AOT) — so travelers and families can celebrate Songkran online. Users pick a character, splash water at picked locations, pay respects with Song Nam Phra, and send New Year blessings to friends. Sign-in with LINE, Google, or Facebook.",
+		role: "Freelance · Full-Stack Developer",
+		image: "/images/songkran-aot-scene.png",
+		tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "Express 5", "PostgreSQL", "Prisma"],
+		highlights: [
+			"Virtual water play & character customization",
+			"Song Nam Phra (digital Buddha blessing)",
+			"Blessing & photo sharing (LINE · Facebook)",
+			"Social login (LINE · Google · Facebook)",
+		],
+		primaryAction: {
+			type: "email",
+			label: "Ask about this project",
+			href: "mailto:jirasitkarunwong@gmail.com?subject=Songkran%20Online%20(AOT)%20Inquiry&body=Hi%20Jirasit,%0A%0AI%E2%80%99d%20like%20to%20know%20more%20about%20the%20Songkran%20Online%20project.%0A%0AThanks!",
+		},
+	},
+	{
+		title: "Internal ERP System",
+		tagline: "Private tool that runs a company from one dashboard",
+		plainDescription:
+			"An all-in-one web app where a company tracks employees, working hours, KPIs, and system health. Think of it as the control room for daily operations — built end-to-end by me as the sole developer during my internship.",
+		role: "Sole Developer · Sati Co., Ltd.",
+		image: "/images/Internal-erp-system.png",
+		tech: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Ant Design"],
+		highlights: ["HR Management", "KPI / OKR tracking", "Clock-in · Clock-out", "System Monitoring"],
+		primaryAction: {
+			type: "email",
+			label: "Request a demo",
+			href: "mailto:jirasitkarunwong@gmail.com?subject=ERP%20Demo%20Request&body=Hi%20Jirasit,%0A%0AI%E2%80%99d%20love%20to%20see%20a%20demo%20of%20the%20ERP%20system.%0A%0AThanks!",
+		},
+	},
+	{
+		title: "Reserve — Online Booking",
+		tagline: "Book a time slot the way you'd book a restaurant",
+		plainDescription:
+			"A booking platform where users sign in, browse availability on a calendar, and reserve a time — with real-time confirmation. Designed to be flexible enough for any kind of venue or service.",
+		role: "Solo Project",
+		image: "/images/booking-system-1.JPG",
+		tech: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+		highlights: ["User Authentication", "Calendar View", "Real-time Notifications"],
+		primaryAction: {
+			type: "github",
+			label: "View code",
+			href: "https://github.com/Tisarji/Reserve-Project",
+		},
+	},
+	{
+		title: "Sati Landing Page",
+		tagline: "Public website for a healthcare-AI company",
+		plainDescription:
+			"The face of Sati Co., Ltd. — showcasing their AI products for hospitals (ChartSum, AI Pre-Audit, AI Claim). I turned a Figma design into a polished, responsive site that looks sharp on both desktop and phone.",
+		role: "Developer",
+		image: "/images/landing-page-sati-01.png",
+		tech: ["Next.js", "MUI", "Figma"],
+		highlights: ["Responsive Design", "Pixel-perfect from Figma", "SEO Ready"],
+		primaryAction: {
+			type: "website",
+			label: "Visit website",
+			href: "https://www.sati.co.th/",
+		},
+	},
+];
+
+const systemsProjects: Project[] = [
+	{
+		title: "FdF — 3D Wireframe Viewer",
+		tagline: "Turns raw numbers into a rotatable 3D landscape",
+		plainDescription:
+			"A program written from scratch in C — no game engine, no libraries. It reads a file of terrain heights and renders it as a 3D wireframe you can rotate, zoom, and recolor. Teaches how graphics actually work under the hood.",
+		role: "42 School Project",
+		icon: <TerrainIcon sx={{ fontSize: 40 }} />,
+		tech: ["C", "MiniLibX", "Graphics Math"],
+		primaryAction: {
+			type: "github",
+			label: "View code",
+			href: "https://github.com/Tisarji/fdf-42cursus",
+		},
+	},
+	{
+		title: "Push Swap — Sorting Puzzle",
+		tagline: "Sort any list with just two stacks and a few moves",
+		plainDescription:
+			"A sorting challenge with a twist: you only get two stacks and a tiny move set. The goal is to finish with as few steps as possible. It's a lesson in thinking efficiently — the same way navigation apps plan shortest routes.",
+		role: "42 School Project",
+		icon: <SwapHorizIcon sx={{ fontSize: 40 }} />,
+		tech: ["C", "Algorithms", "Optimization"],
+		primaryAction: {
+			type: "github",
+			label: "View code",
+			href: "https://github.com/Tisarji/push-swap-42cursus",
+		},
+	},
+	{
+		title: "Philosopher — Concurrency",
+		tagline: "Five philosophers, five forks, no deadlock",
+		plainDescription:
+			"The classic computer-science puzzle: philosophers share forks while eating and thinking. Solving it teaches how computers juggle many tasks at once without getting stuck — the same logic that lets apps stream video while downloading files.",
+		role: "42 School Project",
+		icon: <PsychologyIcon sx={{ fontSize: 40 }} />,
+		tech: ["C", "Threads", "Mutex"],
+		primaryAction: {
+			type: "github",
+			label: "View code",
+			href: "https://github.com/Tisarji/philosopher-42cursus",
+		},
+	},
+];
+
+function ActionIcon({ type }: { type: ActionType }) {
+	if (type === "github") return <GitHubIcon sx={{ fontSize: 16 }} />;
+	if (type === "website") return <LaunchIcon sx={{ fontSize: 16 }} />;
+	return <EmailIcon sx={{ fontSize: 16 }} />;
+}
+
+function ProjectCard({ project, featured }: { project: Project; featured?: boolean }) {
 	return (
-		<section id="projects" className="py-20">
-			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16 space-y-4">
-					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-						Featured Projects
-					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto"></div>
-					<p className="text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-						A collection of projects that showcase my skills and passion for creating innovative solutions
+		<article
+			className={`group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col ${
+				featured ? "overflow-hidden" : ""
+			}`}
+		>
+			{/* Image or Icon header */}
+			{project.image ? (
+				<div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+					<Image
+						src={project.image}
+						alt={project.title}
+						fill
+						className="object-cover transition-transform duration-700 group-hover:scale-105"
+						sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+				</div>
+			) : (
+				<div className="relative h-32 w-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-800">
+					<div className="text-black dark:text-white opacity-80 group-hover:scale-110 transition-transform duration-500">
+						{project.icon}
+					</div>
+				</div>
+			)}
+
+			<div className="p-6 md:p-7 space-y-4 flex-1 flex flex-col">
+				<div className="space-y-2">
+					<p className="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-500">
+						{project.role}
+					</p>
+					<h3 className="text-xl md:text-2xl font-medium text-black dark:text-white leading-tight">
+						{project.title}
+					</h3>
+					<p className="text-sm font-medium text-gray-700 dark:text-gray-300 italic">
+						{project.tagline}
 					</p>
 				</div>
-				
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-					{projects.map((project, index) => (
-						<div 
-							key={index} 
-							className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+
+				<p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+					{project.plainDescription}
+				</p>
+
+				{project.highlights && (
+					<ul className="space-y-1.5 pt-1">
+						{project.highlights.map((h) => (
+							<li
+								key={h}
+								className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
+							>
+								<span className="mt-1.5 w-1 h-1 bg-black dark:bg-white rounded-full shrink-0" />
+								{h}
+							</li>
+						))}
+					</ul>
+				)}
+
+				<div className="flex flex-wrap gap-1.5 pt-1">
+					{project.tech.map((t) => (
+						<span
+							key={t}
+							className="px-2.5 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-transparent hover:border-gray-300 dark:hover:border-gray-700 transition-colors rounded-sm"
 						>
-							<div className="p-8 space-y-6">
-								<div className="flex items-center gap-4">
-									<div className="text-5xl group-hover:scale-110 transition-transform duration-300">
-										{project.image}
-									</div>
-									<div className="flex-1">
-										<h3 className="text-2xl font-light text-black dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
-											{project.title}
-										</h3>
-									</div>
-								</div>
-								
-								<p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-									{project.description}
-								</p>
-								
-								<div className="flex flex-wrap gap-2">
-									{project.technologies.map((tech, techIndex) => (
-										<span 
-											key={techIndex}
-											className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-black dark:hover:border-white transition-colors duration-300"
-										>
-											{tech}
-										</span>
-									))}
-								</div>
-								
-								<div className="flex gap-4 pt-4">
-									<a 
-										href={project.github}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="group/btn flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 hover:border-black dark:hover:border-white transition-all duration-300 text-sm font-medium"
-									>
-										<svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-										</svg>
-										Code
-										<svg className="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-										</svg>
-									</a>
-									<a 
-										href={project.demo}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="group/btn flex items-center gap-2 px-6 py-3 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-xl"
-									>
-										Live Demo
-										<svg className="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-										</svg>
-									</a>
-								</div>
-							</div>
-							
-							{/* Hover effect overlay */}
-							<div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 dark:to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-						</div>
+							{t}
+						</span>
 					))}
 				</div>
-				
+
+				{project.primaryAction && (
+					<div className="flex flex-wrap gap-3 pt-3 mt-auto">
+						<a
+							href={project.primaryAction.href}
+							target={project.primaryAction.type === "email" ? undefined : "_blank"}
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-sm font-medium shadow-sm hover:shadow-md"
+						>
+							<ActionIcon type={project.primaryAction.type} />
+							{project.primaryAction.label}
+						</a>
+						{project.secondaryAction && (
+							<a
+								href={project.secondaryAction.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 dark:border-gray-700 hover:border-black dark:hover:border-white transition-colors text-sm font-medium"
+							>
+								<ActionIcon type={project.secondaryAction.type} />
+								{project.secondaryAction.label}
+							</a>
+						)}
+					</div>
+				)}
+			</div>
+		</article>
+	);
+}
+
+export default function Projects() {
+	return (
+		<section id="projects" className="py-20 md:py-28 px-6 md:px-8">
+			<div className="max-w-7xl mx-auto">
+				<div className="text-center mb-16 space-y-4">
+					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
+						Selected Work
+					</p>
+					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+						Projects
+					</h2>
+					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+						Real things I've built — each explained in plain language so you
+						don't need a tech background to follow along.
+					</p>
+				</div>
+
+				{/* Professional Work */}
+				<div className="mb-20">
+					<div className="flex items-center gap-3 mb-8">
+						<BusinessCenterIcon sx={{ fontSize: 24 }} className="text-black dark:text-white" />
+						<h3 className="text-2xl font-light text-black dark:text-white">
+							Professional Work
+						</h3>
+						<div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+						<span className="text-xs text-gray-500 dark:text-gray-500">
+							Production apps & websites
+						</span>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{professionalProjects.map((p) => (
+							<ProjectCard key={p.title} project={p} featured />
+						))}
+					</div>
+				</div>
+
+				{/* Systems Programming */}
+				<div>
+					<div className="flex items-center gap-3 mb-8">
+						<SchoolOutlinedIcon sx={{ fontSize: 24 }} className="text-black dark:text-white" />
+						<h3 className="text-2xl font-light text-black dark:text-white">
+							Systems & Algorithms
+						</h3>
+						<div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+						<span className="text-xs text-gray-500 dark:text-gray-500">
+							42 School · low-level C
+						</span>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{systemsProjects.map((p) => (
+							<ProjectCard key={p.title} project={p} />
+						))}
+					</div>
+				</div>
+
 				<div className="text-center mt-16">
-					<a 
+					<a
 						href="https://github.com/Tisarji"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-3 px-8 py-4 border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 font-medium tracking-wide group"
+						className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 font-medium tracking-wide"
 					>
-						<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-						</svg>
-						View All Projects on GitHub
-						<svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+						<GitHubIcon sx={{ fontSize: 20 }} />
+						<span>Explore more on GitHub</span>
+						<svg
+							className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
 						</svg>
 					</a>
 				</div>
@@ -142,3 +321,4 @@ export default function Projects() {
 		</section>
 	);
 }
+
