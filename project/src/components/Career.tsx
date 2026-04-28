@@ -100,6 +100,12 @@ export default function Career() {
 			tech: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
 			github: "https://github.com/Tisarji/Reserve-Project",
 		},
+		{
+			title: "Racing Robot Car",
+			description:
+				"Built a self-driving racing robot car powered by a Raspberry Pi — wired the motors and sensors, programmed the control logic, and tuned it for speed and precision on the race track.",
+			tech: ["Raspberry Pi", "Python", "GPIO", "Sensors"],
+		}
 	];
 
 	const bangkokCourses = [
