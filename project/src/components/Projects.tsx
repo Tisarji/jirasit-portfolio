@@ -27,12 +27,12 @@ type Project = {
 
 const professionalProjects: Project[] = [
 	{
-		title: "Songkran Online (AOT)",
+		title: "Songkran Online (AOT · Suvannaphum)",
 		tagline: "A virtual Thai New Year festival you can join from anywhere",
 		plainDescription:
-			"A web app I built as a freelance project for Airports of Thailand (AOT) — so travelers and families can celebrate Songkran online. Users pick a character, splash water at picked locations, pay respects with Song Nam Phra, and send New Year blessings to friends. Sign-in with LINE, Google, or Facebook.",
+			"A web app I built as a freelance project for Airports of Thailand (AOT), featured at Suvannaphum Airport — so travelers and families can celebrate Songkran online. Users pick a character, splash water at picked locations, pay respects with Song Nam Phra, and send New Year blessings to friends. Sign-in with LINE, Google, or Facebook.",
 		role: "Freelance · Full-Stack Developer",
-		image: "/images/songkran-aot-scene.png",
+		image: "/images/songkran-aot-scene.webp",
 		tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "Express 5", "PostgreSQL", "Prisma"],
 		highlights: [
 			"Virtual water play & character customization",
@@ -50,9 +50,9 @@ const professionalProjects: Project[] = [
 		title: "Internal ERP System",
 		tagline: "Private tool that runs a company from one dashboard",
 		plainDescription:
-			"An all-in-one web app where a company tracks employees, working hours, KPIs, and system health. Think of it as the control room for daily operations — built end-to-end by me as the sole developer during my internship.",
+			"An all-in-one web app where a company tracks employees, working hours, KPIs, and system health. Think of it as the control room for daily operations — designed and built end-to-end by me as the sole developer.",
 		role: "Sole Developer · Sati Co., Ltd.",
-		image: "/images/Internal-erp-system.png",
+		image: "/images/Internal-erp-system.webp",
 		tech: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Ant Design"],
 		highlights: ["HR Management", "KPI / OKR tracking", "Clock-in · Clock-out", "System Monitoring"],
 		primaryAction: {
@@ -67,7 +67,7 @@ const professionalProjects: Project[] = [
 		plainDescription:
 			"A booking platform where users sign in, browse availability on a calendar, and reserve a time — with real-time confirmation. Designed to be flexible enough for any kind of venue or service.",
 		role: "Solo Project",
-		image: "/images/booking-system-1.JPG",
+		image: "/images/booking-system-1.webp",
 		tech: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
 		highlights: ["User Authentication", "Calendar View", "Real-time Notifications"],
 		primaryAction: {
@@ -82,7 +82,7 @@ const professionalProjects: Project[] = [
 		plainDescription:
 			"The face of Sati Co., Ltd. — showcasing their AI products for hospitals (ChartSum, AI Pre-Audit, AI Claim). I turned a Figma design into a polished, responsive site that looks sharp on both desktop and phone.",
 		role: "Developer",
-		image: "/images/landing-page-sati-01.png",
+		image: "/images/landing-page-sati-01.webp",
 		tech: ["Next.js", "MUI", "Figma"],
 		highlights: ["Responsive Design", "Pixel-perfect from Figma", "SEO Ready"],
 		primaryAction: {

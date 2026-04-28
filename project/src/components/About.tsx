@@ -7,7 +7,7 @@ import WorkIcon from "@mui/icons-material/Work";
 export default function About() {
 	const facts = [
 		{ icon: <LocationOnIcon sx={{ fontSize: 18 }} />, label: "Based in", value: "Bangkok, Thailand" },
-		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently", value: "Intern @ Sati Co., Ltd." },
+		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently", value: "SWE @ Sati Co., Ltd." },
 		{ icon: <SchoolIcon sx={{ fontSize: 18 }} />, label: "Studied at", value: "MUT · 42 Bangkok" },
 		{ icon: <TranslateIcon sx={{ fontSize: 18 }} />, label: "Languages", value: "Thai · English" },
 	];
@@ -103,7 +103,7 @@ export default function About() {
 						<div className="relative w-64 h-64 group-hover:scale-105 transition-transform duration-500">
 							<div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
 								<Image
-									src="/images/profile.jpg"
+									src="/images/profile.webp"
 									alt="Jirasit Karunwong — Full Stack Developer"
 									width={256}
 									height={256}

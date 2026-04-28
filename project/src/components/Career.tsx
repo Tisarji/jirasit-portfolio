@@ -12,6 +12,12 @@ import CodeIcon from "@mui/icons-material/Code";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import PublicIcon from "@mui/icons-material/Public";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const calculateDuration = (startYear: number, startMonth: number): string => {
 	const now = new Date();
@@ -33,7 +39,7 @@ type Involvement = {
 };
 
 export default function Career() {
-	const internshipDuration = calculateDuration(2025, 6);
+	const tenureDuration = calculateDuration(2025, 6);
 
 	const involvements: Involvement[] = [
 		{
@@ -152,7 +158,7 @@ export default function Career() {
 								<div className="space-y-2">
 									<div className="flex flex-wrap items-center gap-3">
 										<h4 className="text-2xl font-medium text-black dark:text-white">
-											Software Engineer Intern
+											Software Engineer
 										</h4>
 										<span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800 rounded-full">
 											<span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
@@ -165,7 +171,7 @@ export default function Career() {
 									<div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-gray-500 dark:text-gray-500">
 										<span className="inline-flex items-center gap-1.5">
 											<CalendarTodayIcon sx={{ fontSize: 14 }} />
-											Jun 2025 – Present · {internshipDuration}
+											Jun 2025 – Present · {tenureDuration}
 										</span>
 										<span className="inline-flex items-center gap-1.5">
 											<LocationOnIcon sx={{ fontSize: 14 }} />
@@ -189,6 +195,171 @@ export default function Career() {
 									first idea on a whiteboard, through the design, all the way to a live product
 									people use every day.
 								</p>
+							</div>
+
+							{/* Career Path */}
+							<div className="mt-10">
+								{/* Header */}
+								<div className="flex flex-wrap items-end justify-between gap-3 mb-8">
+									<div>
+										<p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-500 mb-1.5">
+											Career path at Sati
+										</p>
+										<h4 className="text-xl font-light text-black dark:text-white tracking-wide">
+											From Internship to Software Engineering
+										</h4>
+									</div>
+									<div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-full">
+										<TrendingUpIcon
+											sx={{ fontSize: 14 }}
+											className="text-gray-500 dark:text-gray-400"
+										/>
+										<span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+											{tenureDuration} at Sati
+										</span>
+									</div>
+								</div>
+
+								{/* Phase cards */}
+								<div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-3 md:gap-2 items-stretch">
+									{/* Phase 01 — Internship */}
+									<article className="group relative p-6 border border-gray-200 dark:border-gray-800 bg-gray-50/40 dark:bg-gray-800/20 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-300">
+										<div className="flex items-start gap-4 mb-5">
+											<div className="w-11 h-11 shrink-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg">
+												<SchoolOutlinedIcon sx={{ fontSize: 22 }} />
+											</div>
+											<div className="min-w-0 flex-1">
+												<p className="text-[10px] uppercase tracking-[0.16em] text-gray-500 dark:text-gray-500 font-semibold mb-1">
+													Phase 01 · Foundation
+												</p>
+												<h5 className="text-base font-medium text-black dark:text-white leading-tight">
+													Internship Software Engineering
+												</h5>
+												<div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500 dark:text-gray-500 mt-2">
+													<span className="inline-flex items-center gap-1">
+														<CalendarTodayIcon sx={{ fontSize: 11 }} />
+														June 2025 — Mar 31, 2026
+													</span>
+													<span>·</span>
+													<span className="font-semibold text-gray-700 dark:text-gray-300">
+														10 months
+													</span>
+												</div>
+											</div>
+										</div>
+
+										<p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+											Joined fresh from university. Shipped real production features
+											alongside senior engineers and earned ownership of an internal
+											product end-to-end.
+										</p>
+
+										<div className="pt-5 border-t border-gray-200 dark:border-gray-800">
+											<p className="text-[10px] uppercase tracking-[0.16em] text-gray-500 dark:text-gray-500 font-semibold mb-3">
+												Highlights
+											</p>
+											<ul className="space-y-2">
+												{[
+													"Owned the internal ERP system as sole developer",
+													"Contributed to the Discharge Summary product in Agile Scrum sprints",
+													"Translated Figma designs into a responsive marketing site",
+												].map((item) => (
+													<li
+														key={item}
+														className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 leading-relaxed"
+													>
+														<CheckCircleOutlineIcon
+															sx={{ fontSize: 14 }}
+															className="text-gray-400 dark:text-gray-600 mt-0.5 shrink-0"
+														/>
+														<span>{item}</span>
+													</li>
+												))}
+											</ul>
+										</div>
+									</article>
+
+									{/* Connector */}
+									<div className="hidden md:flex items-center justify-center px-1">
+										<div className="flex flex-col items-center gap-1">
+											<div className="w-px h-8 bg-gradient-to-b from-transparent to-gray-300 dark:to-gray-700" />
+											<ArrowForwardIcon
+												sx={{ fontSize: 18 }}
+												className="text-gray-400 dark:text-gray-600"
+											/>
+											<div className="w-px h-8 bg-gradient-to-t from-transparent to-gray-300 dark:to-gray-700" />
+										</div>
+									</div>
+									<div className="md:hidden flex justify-center py-1">
+										<ArrowForwardIcon
+											sx={{ fontSize: 20 }}
+											className="rotate-90 text-gray-400 dark:text-gray-600"
+										/>
+									</div>
+
+									{/* Phase 02 — Software Engineering */}
+									<article className="group relative p-6 border border-black dark:border-white bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
+										<div className="absolute top-0 right-0 inline-flex items-center gap-1.5 px-2.5 py-1 bg-black dark:bg-white text-white dark:text-black text-[10px] font-semibold uppercase tracking-[0.14em]">
+											<AutoAwesomeIcon sx={{ fontSize: 10 }} />
+											Starts May 5, 2026
+										</div>
+
+										<div className="flex items-start gap-4 mb-5 mt-1">
+											<div className="w-11 h-11 shrink-0 flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-lg">
+												<RocketLaunchIcon sx={{ fontSize: 22 }} />
+											</div>
+											<div className="min-w-0 flex-1">
+												<p className="text-[10px] uppercase tracking-[0.16em] text-gray-500 dark:text-gray-500 font-semibold mb-1">
+													Phase 02 · Ownership
+												</p>
+												<h5 className="text-base font-medium text-black dark:text-white leading-tight">
+													Software Engineering
+												</h5>
+												<div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500 dark:text-gray-500 mt-2">
+													<span className="inline-flex items-center gap-1">
+														<CalendarTodayIcon sx={{ fontSize: 11 }} />
+														May 5, 2026 — Onwards
+													</span>
+													<span>·</span>
+													<span className="font-semibold text-gray-700 dark:text-gray-300">
+														Full-time
+													</span>
+												</div>
+											</div>
+										</div>
+
+										<p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+											Promoted to full-time after the internship. Will lead full-stack
+											builds end-to-end — from system design and database modeling all
+											the way through to production deployment.
+										</p>
+
+										<div className="pt-5 border-t border-gray-200 dark:border-gray-800">
+											<p className="text-[10px] uppercase tracking-[0.16em] text-gray-500 dark:text-gray-500 font-semibold mb-3">
+												What I'll own
+											</p>
+											<ul className="space-y-2">
+												{[
+													"Full-stack architecture for new product features",
+													"Database modeling and API design from scratch",
+													"Production deployment and infrastructure on AWS",
+												].map((item) => (
+													<li
+														key={item}
+														className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 leading-relaxed"
+													>
+														<CheckCircleOutlineIcon
+															sx={{ fontSize: 14 }}
+															className="text-black dark:text-white mt-0.5 shrink-0"
+														/>
+														<span>{item}</span>
+													</li>
+												))}
+											</ul>
+										</div>
+									</article>
+								</div>
+
 							</div>
 						</div>
 
