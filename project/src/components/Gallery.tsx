@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LaunchIcon from "@mui/icons-material/Launch";
@@ -21,18 +21,18 @@ type MediaItem = {
 
 const mediaItems: MediaItem[] = [
 	{ id: 1, title: "FdF", category: "42 School Project", src: "/images/fdf.webp", type: "image", action: "github", link: "https://github.com/Tisarji/fdf-42cursus" },
-	{ id: 2, title: "FdF in Action", category: "42 School Project", src: "/images/fdf3-doing.MOV", type: "video", action: "none" },
-	{ id: 25, title: "Minishell in Action", category: "42 School Project", src: "/images/minishell-doing.MOV", type: "video", action: "none" },
+	{ id: 2, title: "FdF in Action", category: "42 School Project", src: "/images/fdf3-doing.mp4", type: "video", action: "none" },
+	{ id: 25, title: "Minishell in Action", category: "42 School Project", src: "/images/minishell-doing.mp4", type: "video", action: "none" },
 	{ id: 3, title: "Class Lecture", category: "Mentoring", src: "/images/lecture-student-about-class.webp", type: "image", action: "none" },
 	{ id: 24, title: "Class Lecture (DSR)", category: "Mentoring", src: "/images/lecture-dsr.webp", type: "image", action: "none" },
 	{ id: 14, title: "Hackathon Competitor 3", category: "Hackathon", src: "/images/uni-hackathon-3.webp", type: "image", action: "none" },
 	{ id: 4, title: "Hackathon Staff", category: "Hackathon", src: "/images/staff-hackathon-1.webp", type: "image", action: "none" },
 	{ id: 5, title: "TA KMITL", category: "Mentoring", src: "/images/tutor-kmitl.webp", type: "image", action: "none" },
-	{ id: 21, title: "Internal ERP Demo 2", category: "Professional Work", src: "/images/internal-erp-system-2.MOV", type: "video", action: "none" },
+	{ id: 21, title: "Internal ERP Demo 2", category: "Professional Work", src: "/images/internal-erp-system-2.mp4", type: "video", action: "none" },
 	{ id: 22, title: "Booking System 1", category: "Professional Work", src: "/images/booking-system-1.webp", type: "image", action: "none" },
 	{ id: 23, title: "Booking System 2", category: "Professional Work", src: "/images/booking-system-2.webp", type: "image", action: "none" },
 	{ id: 7, title: "Hackathon Competitor 2", category: "Hackathon", src: "/images/uni-hackathon-2.webp", type: "image", action: "none" },
-	{ id: 8, title: "FdF in Action 2", category: "42 School Project", src: "/images/fdf2-doing.MOV", type: "video", action: "none" },
+	{ id: 8, title: "FdF in Action 2", category: "42 School Project", src: "/images/fdf2-doing.mp4", type: "video", action: "none" },
 	{
 		id: 9,
 		title: "Internal ERP System",
@@ -42,9 +42,9 @@ const mediaItems: MediaItem[] = [
 		action: "request",
 		link: "mailto:jirasitkarunwong@gmail.com?subject=ERP%20Demo%20Request",
 	},
-	{ id: 20, title: "Internal ERP Demo 1", category: "Professional Work", src: "/images/internal-erp-system-1.MOV", type: "video", action: "none" },
+	{ id: 20, title: "Internal ERP Demo 1", category: "Professional Work", src: "/images/internal-erp-system-1.mp4", type: "video", action: "none" },
 	{ id: 6, title: "Hackathon Competitor 1", category: "Hackathon", src: "/images/uni-hackathon-1.webp", type: "image", action: "none" },
-	{ id: 10, title: "Hackathon Vibe", category: "Hackathon", src: "/images/staff-hackathon-3.MOV", type: "video", action: "none" },
+	{ id: 10, title: "Hackathon Vibe", category: "Hackathon", src: "/images/staff-hackathon-3.mp4", type: "video", action: "none" },
 	{ id: 11, title: "Robotics Class 1", category: "Mentoring", src: "/images/lecture-student-about-robot-1.webp", type: "image", action: "none" },
 	{ id: 12, title: "Hackathon Staff 2", category: "Hackathon", src: "/images/staff-hackathon-2.webp", type: "image", action: "none" },
 	{ id: 13, title: "Teaching C", category: "Mentoring", src: "/images/teaching-friend-in-c.webp", type: "image", action: "none" },
@@ -77,7 +77,7 @@ const mediaItems: MediaItem[] = [
 	{ id: 39, title: "Robotics Class 3", category: "Mentoring", src: "/images/lecture-student-about-robot-3.webp", type: "image", action: "none" },
 	{ id: 40, title: "Robotics Class 4", category: "Mentoring", src: "/images/lecture-student-about-robot-4.webp", type: "image", action: "none" },
 	{ id: 41, title: "Robotics Class 5", category: "Mentoring", src: "/images/lecture-student-about-robot-5.webp", type: "image", action: "none" },
-	{ id: 42, title: "Activities Video", category: "Hackathon", src: "/images/video_591131406516879706-eln87HBG.MP4", type: "video", action: "none" },
+	{ id: 42, title: "Activities Video", category: "Hackathon", src: "/images/video_591131406516879706-eln87HBG.mp4", type: "video", action: "none" },
 ];
 
 const categories = [
@@ -90,6 +90,78 @@ const categories = [
 ] as const;
 
 type Category = (typeof categories)[number];
+
+function LazyVideo({ src, isHovered, alt }: { src: string; isHovered: boolean; alt: string }) {
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const videoRef = useRef<HTMLVideoElement | null>(null);
+	const [shouldLoad, setShouldLoad] = useState(false);
+	const poster = src.replace(/\.mp4$/i, "-poster.jpg");
+
+	useEffect(() => {
+		const node = containerRef.current;
+		if (!node) return;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						setShouldLoad(true);
+						observer.disconnect();
+						break;
+					}
+				}
+			},
+			{ rootMargin: "300px 0px" }
+		);
+		observer.observe(node);
+		return () => observer.disconnect();
+	}, []);
+
+	useEffect(() => {
+		const video = videoRef.current;
+		if (!video || !shouldLoad) return;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) video.play().catch(() => {});
+					else video.pause();
+				}
+			},
+			{ threshold: 0.25 }
+		);
+		observer.observe(video);
+		return () => observer.disconnect();
+	}, [shouldLoad]);
+
+	return (
+		<div ref={containerRef} className="w-full">
+			{shouldLoad ? (
+				<video
+					ref={videoRef}
+					src={src}
+					poster={poster}
+					loop
+					muted
+					playsInline
+					preload="metadata"
+					className={`w-full h-auto object-cover transition-all duration-700 ${
+						isHovered ? "scale-105 blur-sm" : "scale-100"
+					}`}
+				/>
+			) : (
+				<Image
+					src={poster}
+					alt={alt}
+					width={800}
+					height={450}
+					quality={70}
+					loading="lazy"
+					className="w-full h-auto object-cover"
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+				/>
+			)}
+		</div>
+	);
+}
 
 function ActionBadge({ action }: { action: MediaAction }) {
 	if (action === "none") return null;
@@ -196,16 +268,7 @@ export default function Gallery() {
 								<div className="relative bg-black/5 dark:bg-white/5">
 									{item.type === "video" ? (
 										<>
-											<video
-												src={item.src}
-												autoPlay
-												loop
-												muted
-												playsInline
-												className={`w-full h-auto object-cover transition-all duration-700 ${
-													isHovered ? "scale-105 blur-sm" : "scale-100"
-												}`}
-											/>
+											<LazyVideo src={item.src} isHovered={isHovered} alt={item.title} />
 											<div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white pointer-events-none">
 												<PlayCircleOutlineIcon sx={{ fontSize: 18 }} />
 											</div>
@@ -216,6 +279,8 @@ export default function Gallery() {
 											alt={item.title}
 											width={800}
 											height={800}
+											quality={70}
+											loading="lazy"
 											className={`w-full h-auto object-cover transition-all duration-700 ${
 												isHovered ? "scale-105 blur-sm" : "scale-100"
 											}`}
