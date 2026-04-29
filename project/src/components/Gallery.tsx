@@ -65,7 +65,7 @@ const mediaItems: MediaItem[] = [
 	{ id: 17, title: "Sati Landing Page 2", category: "Professional Work", src: "/images/landing-page-sati-02.webp", type: "image", action: "view", link: "https://www.sati.co.th/" },
 	{
 		id: 43,
-		title: "Songkran Online — AOT · Suvannaphum",
+		title: "Songkran Online — AOT · Suwannaphum",
 		category: "Professional Work",
 		src: "/images/songkran-aot-scene.webp",
 		type: "image",

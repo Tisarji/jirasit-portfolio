@@ -27,10 +27,10 @@ type Project = {
 
 const professionalProjects: Project[] = [
 	{
-		title: "Songkran Online (AOT · Suvannaphum)",
+		title: "Songkran Online (AOT · Suwannaphum)",
 		tagline: "A virtual Thai New Year festival you can join from anywhere",
 		plainDescription:
-			"A web app I built as a freelance project for Airports of Thailand (AOT), featured at Suvannaphum Airport — so travelers and families can celebrate Songkran online. Users pick a character, splash water at picked locations, pay respects with Song Nam Phra, and send New Year blessings to friends. Sign-in with LINE, Google, or Facebook.",
+			"A web app I built as a freelance project for Airports of Thailand (AOT), featured at Suwannaphum Airport — so travelers and families can celebrate Songkran online. Users pick a character, splash water at picked locations, pay respects with Song Nam Phra, and send New Year blessings to friends. Sign-in with LINE, Google, or Facebook.",
 		role: "Freelance · Full-Stack Developer",
 		image: "/images/songkran-aot-scene.webp",
 		tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "Express 5", "PostgreSQL", "Prisma"],
@@ -321,4 +321,3 @@ export default function Projects() {
 		</section>
 	);
 }
-
