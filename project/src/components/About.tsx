@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ROLES } from "@/content/career";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TranslateIcon from "@mui/icons-material/Translate";
 import SchoolIcon from "@mui/icons-material/School";
@@ -7,7 +8,7 @@ import WorkIcon from "@mui/icons-material/Work";
 export default function About() {
 	const facts = [
 		{ icon: <LocationOnIcon sx={{ fontSize: 18 }} />, label: "Based in", value: "Bangkok, Thailand" },
-		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently", value: "SWE @ Sati Co., Ltd." },
+		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently at", value: ROLES[0].company },
 		{ icon: <SchoolIcon sx={{ fontSize: 18 }} />, label: "Studied at", value: "MUT · 42 Bangkok" },
 		{ icon: <TranslateIcon sx={{ fontSize: 18 }} />, label: "Languages", value: "Thai · English" },
 	];
@@ -29,9 +30,10 @@ export default function About() {
 
 					<div className="space-y-5">
 						<p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed font-light">
-							I'm a <span className="font-medium text-black dark:text-white">full-stack developer</span>
+							I'm a <span className="font-medium text-black dark:text-white">software and firmware engineer</span>
 							{" "}— meaning I build <em>both</em> the visible side of a website or app (the part
-							you click) and the invisible engine behind it (where the data lives).
+							you click) and the invisible engine behind it (where the data lives), and
+							increasingly the code that runs on the hardware itself.
 						</p>
 						<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
 							My favorite kind of work is turning a messy, ambiguous problem into
@@ -104,7 +106,7 @@ export default function About() {
 							<div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
 								<Image
 									src="/images/profile.webp"
-									alt="Jirasit Karunwong — Full Stack Developer"
+									alt="Jirasit Karunwong — Software and Firmware Engineer"
 									width={256}
 									height={256}
 									className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"

@@ -147,17 +147,6 @@ export default function Footer() {
 									</a>
 								))}
 							</div>
-							
-							{/* Status Indicator */}
-							<div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-								<div className="flex items-center gap-3">
-									<div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-									<div>
-										<p className="text-sm font-medium text-green-800 dark:text-green-300">Available for Work</p>
-										<p className="text-xs text-green-600 dark:text-green-400">Open to new opportunities</p>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 

@@ -26,16 +26,6 @@ export default function Intro() {
 			</div>
 
 			<div className="text-center max-w-5xl mx-auto relative space-y-10">
-				{/* Availability chip */}
-				<div
-					className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-full animate-fadeInUp"
-				>
-					<span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-					<span className="text-xs font-medium text-green-700 dark:text-green-300 tracking-wide">
-						Available for new opportunities
-					</span>
-				</div>
-
 				{/* Name */}
 				<div className="space-y-5">
 					<h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-wider leading-[1.05] pb-2">
@@ -66,12 +56,12 @@ export default function Intro() {
 					style={{ animationDelay: "0.6s" }}
 				>
 					<p className="text-2xl md:text-3xl text-gray-800 dark:text-gray-200 font-extralight tracking-wide">
-						Full Stack Developer
+						Software &amp; Firmware Engineer
 					</p>
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-						I build the websites and apps you use every day — from the polished screens
-						on the front, to the quiet engines running behind them. Currently going deep
-						on AI.
+						I build the websites and apps you use every day — the polished screens on the
+						front, the quiet engines behind them, and lately the code that runs on the
+						device itself.
 					</p>
 				</div>
 
@@ -85,7 +75,7 @@ export default function Intro() {
 							Full-Stack
 						</p>
 						<p className="text-xs uppercase tracking-wider text-gray-500 mt-1">
-							Frontend + Backend
+							Web · App · Device
 						</p>
 					</div>
 					<div className="py-5">
