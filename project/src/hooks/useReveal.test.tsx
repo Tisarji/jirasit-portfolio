@@ -40,7 +40,7 @@ describe("useReveal", () => {
 		installObserver(); setReducedMotion(false);
 		const { getByTestId } = render(<Probe />);
 		const el = getByTestId("probe");
-		act(() => trigger!([{ target: el, isIntersecting: true } as IntersectionObserverEntry]));
+		act(() => trigger!([{ target: el, isIntersecting: true } as unknown as IntersectionObserverEntry]));
 		expect(el.getAttribute("data-revealed")).toBe("true");
 		expect(unobserve).toHaveBeenCalledOnce();
 	});
