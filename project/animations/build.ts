@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { checkCoverage } from "@clayzo/webgl-player";
 import type { AnimationDocument } from "@clayzo/animation/authoring";
+import { buildHero } from "./hero";
 import { buildRule } from "./rule";
 
 const OUT_DIR = "public/anim";
@@ -10,6 +11,7 @@ const checkOnly = process.argv.includes("--check");
 /** Every document shipped on the site. The coverage gate runs over all of them. */
 const DOCUMENTS: { name: string; build: () => AnimationDocument; posterTick: number }[] = [
 	{ name: "rule", build: buildRule, posterTick: 240 },
+	{ name: "hero", build: buildHero, posterTick: 480 },
 ];
 
 async function main(): Promise<void> {

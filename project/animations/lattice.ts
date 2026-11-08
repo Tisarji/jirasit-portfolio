@@ -23,6 +23,8 @@ export type LatticeOptions = {
 	wavelengthCols?: number;
 	/** Floor of the scale range — never 0, so the field keeps a readable base. */
 	minimum?: number;
+	/** Fill opacity. Set here, never on the node: node opacity is a layer per unit per frame. */
+	fillOpacity?: number;
 };
 
 /**
@@ -43,6 +45,7 @@ export function lattice(options: LatticeOptions): SceneNode[] {
 		thickness = 0.25,
 		wavelengthCols = 8,
 		minimum = 0.18,
+		fillOpacity = 1,
 	} = options;
 
 	const pitchX = width / cols;
@@ -79,7 +82,7 @@ export function lattice(options: LatticeOptions): SceneNode[] {
 				type: "rect",
 				size: constant({ width: barWidth, height: cellHeight }),
 				cornerRadius: constant(0),
-				style: { fill: fill(color) },
+				style: { fill: fill(color, fillOpacity) },
 			} as SceneNode);
 		}
 	}

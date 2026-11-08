@@ -1,35 +1,5 @@
 @import "tailwindcss";
 
-/*
- * Tailwind v4 reads its theme from CSS, not from a JS config. The old
- * tailwind.config.ts declared seven keyframes that never reached the browser
- * because nothing ever loaded it; only the two with surviving callers are
- * carried over here.
- */
-@theme {
-	--animate-float: float 6s ease-in-out infinite;
-	--animate-spin-slow: spin-slow 20s linear infinite;
-
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
-
-	@keyframes spin-slow {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-}
-
 html {
 	scroll-behavior: smooth;
 }

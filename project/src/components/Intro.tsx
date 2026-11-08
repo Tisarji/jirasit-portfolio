@@ -1,22 +1,13 @@
 "use client";
 
-import BoltIcon from "@mui/icons-material/Bolt";
-import ComputerIcon from "@mui/icons-material/Computer";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Reveal from "./Reveal";
+import HeroField from "./clayzo/HeroField";
 
 export default function Intro() {
 	return (
 		<section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden px-6 md:px-8">
 			{/* Background layers */}
 			<div className="absolute inset-0 -z-10 pointer-events-none">
-				<div className="absolute top-20 left-10 w-32 h-32 bg-black/5 dark:bg-white/5 rounded-full blur-3xl animate-float" />
-				<div
-					className="absolute bottom-20 right-10 w-48 h-48 bg-black/3 dark:bg-white/3 rounded-full blur-3xl animate-float"
-					style={{ animationDelay: "2s" }}
-				/>
-				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-black/5 to-transparent dark:from-white/5 rounded-full blur-3xl animate-spin-slow" />
 				<div
 					className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
 					style={{
@@ -25,6 +16,8 @@ export default function Intro() {
 					}}
 				/>
 			</div>
+
+			<HeroField />
 
 			<div className="text-center max-w-5xl mx-auto relative space-y-10">
 				{/* Name */}
@@ -125,28 +118,6 @@ export default function Intro() {
 					</a>
 				</Reveal>
 
-				{/* Floating decorative icons */}
-				<div className="absolute -top-12 -left-12 opacity-10 animate-float">
-					<BoltIcon sx={{ fontSize: 60 }} />
-				</div>
-				<div
-					className="absolute -bottom-12 -right-12 opacity-10 animate-float"
-					style={{ animationDelay: "1s" }}
-				>
-					<ComputerIcon sx={{ fontSize: 50 }} />
-				</div>
-				<div
-					className="absolute top-1/4 -right-8 opacity-10 animate-float"
-					style={{ animationDelay: "2s" }}
-				>
-					<RocketLaunchIcon sx={{ fontSize: 30 }} />
-				</div>
-				<div
-					className="absolute bottom-1/4 -left-8 opacity-10 animate-float"
-					style={{ animationDelay: "3s" }}
-				>
-					<AutoAwesomeIcon sx={{ fontSize: 40 }} />
-				</div>
 			</div>
 
 			{/* Scroll hint */}
