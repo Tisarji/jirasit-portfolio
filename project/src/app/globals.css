@@ -16,7 +16,14 @@ html {
 	transform: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/*
+ * `scripting: enabled` is what keeps this honest. The hidden state is only ever
+ * correct when something will arrive to undo it; with JavaScript off nothing
+ * does, and without this guard every revealed block on the page renders at
+ * opacity 0 — a blank document. A browser too old to know the query simply
+ * skips the block and shows the content, which is the right way to fail.
+ */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
 	[data-reveal] {
 		transition:
 			opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
