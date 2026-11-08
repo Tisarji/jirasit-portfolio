@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { checkCoverage } from "@clayzo/webgl-player";
 import type { AnimationDocument } from "@clayzo/animation/authoring";
 import { buildHero } from "./hero";
+import { buildMark } from "./mark";
 import { buildRule } from "./rule";
 
 const OUT_DIR = "public/anim";
@@ -12,6 +13,7 @@ const checkOnly = process.argv.includes("--check");
 const DOCUMENTS: { name: string; build: () => AnimationDocument; posterTick: number }[] = [
 	{ name: "rule", build: buildRule, posterTick: 240 },
 	{ name: "hero", build: buildHero, posterTick: 480 },
+	{ name: "mark", build: buildMark, posterTick: 0 },
 ];
 
 async function main(): Promise<void> {
