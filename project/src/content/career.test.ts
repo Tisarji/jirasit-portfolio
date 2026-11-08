@@ -1,6 +1,19 @@
 import { describe, expect, it } from "vitest";
 import { formatTenure, formatTenureRange, ROLES } from "./career";
 
+/** The spec forbids publishing version numbers, issue keys, stack names, commit counts and spend. */
+const FORBIDDEN: [string, RegExp][] = [
+	["issue key", /\b[A-Z]{2,6}-\d{1,6}\b/],
+	["version", /\bv?\d+\.\d+\.\d+\b/],
+	["stack or env name", /\b[a-z0-9]+-(?:dev|prod|staging|uat|qa)\b/i],
+	["commit count", /\b\d+\s+commits?\b/i],
+	["spend", /(?:[$€£]\s?\d|\b\d+(?:\.\d+)?\s?(?:USD|THB|EUR)\b)/i],
+];
+
+function leaks(text: string): string[] {
+	return FORBIDDEN.filter(([, pattern]) => pattern.test(text)).map(([label]) => label);
+}
+
 const NOW = new Date(2026, 10, 8); // 2026-11-08
 
 describe("formatTenure", () => {
@@ -43,10 +56,21 @@ describe("ROLES", () => {
 		expect(sati.tenure.endMonth).toBe(8);
 		expect(sati.tenure.endYear).toBe(2026);
 	});
-	it("publishes no internal identifiers", () => {
-		const text = JSON.stringify(ROLES);
-		for (const leak of ["AW-120", "CRA", "v0.1", "cardlight-dev", "staging", "Bedrock spend"]) {
-			expect(text).not.toContain(leak);
-		}
+	// The previous form asserted that six invented literals were absent. None was
+	// ever present and no plausible edit introduces any of them verbatim, so it
+	// could not fail. These match the SHAPE of the things the spec forbids, and
+	// the detector is exercised against a leaky sample below so it can fail.
+	it("publishes nothing shaped like an internal identifier", () => {
+		expect(leaks(JSON.stringify(ROLES))).toEqual([]);
+	});
+});
+
+describe("the confidentiality detector itself", () => {
+	it("catches each forbidden shape, so the guard above can fail", () => {
+		expect(leaks('worked on AW-120')).toEqual(["issue key"]);
+		expect(leaks('shipped v0.17.1')).toEqual(["version"]);
+		expect(leaks('deployed to cardlight-dev')).toEqual(["stack or env name"]);
+		expect(leaks('36 commits')).toEqual(["commit count"]);
+		expect(leaks('$420 of Bedrock')).toEqual(["spend"]);
 	});
 });

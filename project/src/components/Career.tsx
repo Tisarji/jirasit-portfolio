@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -84,6 +84,12 @@ function InvolvementCard({ item, index }: { item: Involvement; index: number }) 
 }
 
 function RoleCard({ role, index }: { role: Role; index: number }) {
+	//  is prerendered, so a duration computed during render is baked into the
+	// HTML: it disagrees with the client at hydration and goes stale until the
+	// next deploy. The range is a fact; the duration is derived from today.
+	const [today, setToday] = useState<Date | null>(null);
+	useEffect(() => setToday(new Date()), []);
+
 	return (
 		<Reveal index={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow duration-500">
 			<div className="p-6 md:p-8 border-b border-gray-200 dark:border-gray-800">
@@ -105,7 +111,8 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
 					<div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-gray-500 dark:text-gray-500">
 						<span className="inline-flex items-center gap-1.5">
 							<CalendarTodayIcon sx={{ fontSize: 14 }} />
-							{formatTenureRange(role.tenure)} · {formatTenure(role.tenure)}
+							{formatTenureRange(role.tenure)}
+							{today ? ` · ${formatTenure(role.tenure, today)}` : ""}
 						</span>
 						<span className="inline-flex items-center gap-1.5">
 							<LocationOnIcon sx={{ fontSize: 14 }} />

@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { ClayzoPlayer } from "@clayzo/webgl-player/react";
 import type { PlayerHandle } from "@clayzo/webgl-player";
-import { readClayzoBundle, type LoadedClayzo } from "@clayzo/animation/bundle";
+import type { LoadedClayzo } from "@clayzo/animation/bundle";
+import { loadBundle } from "./loadBundle";
 
 /**
  * The rule under a section heading. One document, six variants: each section
@@ -25,9 +26,7 @@ export default function SectionRule({
 
 	useEffect(() => {
 		let cancelled = false;
-		fetch("/anim/rule.clayzo")
-			.then((response) => response.arrayBuffer())
-			.then((bytes) => readClayzoBundle(new Uint8Array(bytes)))
+		loadBundle("/anim/rule.clayzo")
 			.then((loaded) => {
 				if (!cancelled) setBundle(loaded);
 			})

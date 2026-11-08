@@ -1,6 +1,5 @@
 "use client";
 
-import Reveal from "./Reveal";
 import HeroField from "./clayzo/HeroField";
 
 export default function Intro() {
@@ -21,7 +20,7 @@ export default function Intro() {
 
 			<div className="text-center max-w-5xl mx-auto relative space-y-10">
 				{/* Name */}
-				<Reveal className="space-y-5">
+				<div className="space-y-5">
 					<h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-wider leading-[1.05] pb-2">
 						<span className="block bg-gradient-to-r from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent">
 							Jirasit
@@ -34,10 +33,10 @@ export default function Intro() {
 					<div className="flex justify-center">
 						<div className="relative w-40 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white" />
 					</div>
-				</Reveal>
+				</div>
 
 				{/* Value prop */}
-				<Reveal index={1} className="space-y-4 max-w-3xl mx-auto">
+				<div className="space-y-4 max-w-3xl mx-auto">
 					<p className="text-2xl md:text-3xl text-gray-800 dark:text-gray-200 font-extralight tracking-wide">
 						Software &amp; Firmware Engineer
 					</p>
@@ -46,10 +45,10 @@ export default function Intro() {
 						front, the quiet engines behind them, and lately the code that runs on the
 						device itself.
 					</p>
-				</Reveal>
+				</div>
 
 				{/* Quick highlights */}
-				<Reveal index={2} className="grid grid-cols-3 max-w-2xl mx-auto divide-x divide-gray-200 dark:divide-gray-800 border-y border-gray-200 dark:border-gray-800">
+				<div className="grid grid-cols-3 max-w-2xl mx-auto divide-x divide-gray-200 dark:divide-gray-800 border-y border-gray-200 dark:border-gray-800">
 					<div className="py-5">
 						<p className="text-2xl md:text-3xl font-light text-black dark:text-white">
 							Full-Stack
@@ -67,13 +66,13 @@ export default function Intro() {
 					<div className="py-5">
 						<p className="text-2xl md:text-3xl font-light text-black dark:text-white">AI</p>
 						<p className="text-xs uppercase tracking-wider text-gray-500 mt-1">
-							Current Focus
+							In Production
 						</p>
 					</div>
-				</Reveal>
+				</div>
 
 				{/* CTAs */}
-				<Reveal index={3} className="flex flex-col sm:flex-row gap-4 justify-center">
+				<div className="flex flex-col sm:flex-row gap-4 justify-center">
 					<a
 						href="#projects"
 						className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-500 font-medium tracking-wide shadow-lg hover:shadow-2xl"
@@ -116,7 +115,7 @@ export default function Intro() {
 							</svg>
 						</span>
 					</a>
-				</Reveal>
+				</div>
 
 			</div>
 

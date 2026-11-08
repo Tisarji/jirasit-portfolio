@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ClayzoPlayer } from "@clayzo/webgl-player/react";
 import type { PlayerHandle } from "@clayzo/webgl-player";
-import { readClayzoBundle, type LoadedClayzo } from "@clayzo/animation/bundle";
+import type { LoadedClayzo } from "@clayzo/animation/bundle";
+import { loadBundle } from "./loadBundle";
 
 /**
  * The mark under the JK logo. The letterforms stay DOM text — crisp, selectable
@@ -19,9 +20,7 @@ export default function NavMark({ hovered }: { hovered: boolean }) {
 
 	useEffect(() => {
 		let cancelled = false;
-		fetch("/anim/mark.clayzo")
-			.then((response) => response.arrayBuffer())
-			.then((bytes) => readClayzoBundle(new Uint8Array(bytes)))
+		loadBundle("/anim/mark.clayzo")
 			.then((loaded) => {
 				if (!cancelled) setBundle(loaded);
 			})

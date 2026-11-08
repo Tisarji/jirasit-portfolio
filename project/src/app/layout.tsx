@@ -29,6 +29,18 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="scroll-smooth">
+			<head>
+				{/*
+				  Runs before first paint. The scroll-reveal system hides content until
+				  something marks it revealed; this is the proof that a something exists.
+				  Without it, a blocked or failed bundle leaves the page permanently blank.
+				*/}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: 'document.documentElement.setAttribute("data-js","")',
+					}}
+				/>
+			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-black dark:text-white transition-colors duration-300 font-sans leading-relaxed overflow-x-hidden`}>
 				{children}
 			</body>

@@ -1,6 +1,7 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { checkCoverage } from "@clayzo/webgl-player";
+import { readClayzoBundle } from "@clayzo/animation/bundle";
 import type { AnimationDocument } from "@clayzo/animation/authoring";
 import { buildHero } from "./hero";
 import { buildMark } from "./mark";
@@ -23,7 +24,6 @@ async function main(): Promise<void> {
 	for (const { name, build, posterTick } of DOCUMENTS) {
 		const document = build();
 		const path = `${OUT_DIR}/${name}.json`;
-		writeFileSync(path, `${JSON.stringify(document, null, "\t")}\n`);
 
 		// The renderer is WebGL and only WebGL. A document the player cannot draw
 		// must fail the build, not ship and quietly render nothing.
@@ -36,13 +36,36 @@ async function main(): Promise<void> {
 			console.log(`[coverage] ${name}: ok`);
 		}
 
-		if (!checkOnly) {
-			execFileSync(
-				"npx",
-				["clayzo", "package", path, `${OUT_DIR}/${name}.clayzo`, "--poster", String(posterTick)],
-				{ stdio: "inherit" },
-			);
+		if (checkOnly) {
+			// Coverage on a freshly built document says nothing about the artifact
+			// the browser actually fetches. Edit an animation, run the build, and
+			// without this the gate passes while readers keep getting the old one.
+			try {
+				const shipped = await readClayzoBundle(
+					new Uint8Array(readFileSync(`${OUT_DIR}/${name}.clayzo`)),
+				);
+				if (shipped.document.revision !== document.revision) {
+					failed = true;
+					console.error(
+						`[stale] ${name}.clayzo is revision ${shipped.document.revision}, ` +
+							`sources build ${document.revision}. Run: npm run anim:build`,
+					);
+				} else {
+					console.log(`[stale] ${name}: shipped bundle matches source`);
+				}
+			} catch (error) {
+				failed = true;
+				console.error(`[stale] ${name}.clayzo is missing or unreadable:`, String(error));
+			}
+			continue;
 		}
+
+		writeFileSync(path, `${JSON.stringify(document, null, "\t")}\n`);
+		execFileSync(
+			"npx",
+			["clayzo", "package", path, `${OUT_DIR}/${name}.clayzo`, "--poster", String(posterTick)],
+			{ stdio: "inherit" },
+		);
 	}
 
 	if (failed) process.exit(1);

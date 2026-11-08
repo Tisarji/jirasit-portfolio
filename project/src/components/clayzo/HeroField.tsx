@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { ClayzoPlayer } from "@clayzo/webgl-player/react";
-import { readClayzoBundle, type LoadedClayzo } from "@clayzo/animation/bundle";
+import type { LoadedClayzo } from "@clayzo/animation/bundle";
+import { loadBundle } from "./loadBundle";
 
 /**
  * The hero field: three depth planes of the bar system, parallaxing under the
@@ -15,9 +16,7 @@ export default function HeroField() {
 
 	useEffect(() => {
 		let cancelled = false;
-		fetch("/anim/hero.clayzo")
-			.then((response) => response.arrayBuffer())
-			.then((bytes) => readClayzoBundle(new Uint8Array(bytes)))
+		loadBundle("/anim/hero.clayzo")
 			.then((loaded) => {
 				if (!cancelled) setBundle(loaded);
 			})
@@ -30,13 +29,16 @@ export default function HeroField() {
 	}, []);
 
 	return (
-		<div className="absolute inset-x-0 bottom-0 -z-10 mix-blend-difference pointer-events-none">
+		/* -z-10 already keeps this behind the content column, so it needs no
+		   pointer-events guard — and pointer-events: none would inherit to the
+		   canvas and silently kill the parallax the piece exists for. */
+		<div className="absolute inset-x-0 bottom-0 -z-10 mix-blend-difference" style={{ aspectRatio: "1600 / 900" }}>
 			<ClayzoPlayer
 				document={bundle?.document ?? null}
 				options={{ loaders: bundle ?? undefined }}
 				poster="/anim/hero.poster.webp"
 				posterTick={480}
-				label="A field of bars rising and falling in a slow wave"
+				decorative
 				fallback={null}
 			/>
 		</div>
