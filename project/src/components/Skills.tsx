@@ -5,6 +5,8 @@ import StorageIcon from "@mui/icons-material/Storage";
 import BuildIcon from "@mui/icons-material/Build";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import Reveal from "./Reveal";
+import { usePointerField } from "@/hooks/usePointerField";
 
 type Skill = { name: string; level: 1 | 2 | 3 };
 
@@ -104,6 +106,8 @@ function LevelDots({ level }: { level: 1 | 2 | 3 }) {
 }
 
 export default function Skills() {
+	const gridRef = usePointerField<HTMLDivElement>();
+
 	return (
 		<section id="skills" className="py-20 md:py-28 px-6 md:px-8 relative overflow-hidden">
 			<div className="absolute inset-0 -z-10 pointer-events-none">
@@ -112,7 +116,7 @@ export default function Skills() {
 			</div>
 
 			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16 space-y-4">
+				<Reveal className="text-center mb-16 space-y-4">
 					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 						What I can do
 					</p>
@@ -140,12 +144,13 @@ export default function Skills() {
 							<span className="text-xs text-gray-500 uppercase tracking-wider">Expert</span>
 						</div>
 					</div>
-				</div>
+				</Reveal>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-					{skillCategories.map((category) => (
-						<div
+				<div ref={gridRef} data-pointer-field="" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					{skillCategories.map((category, index) => (
+						<Reveal
 							key={category.title}
+							index={index}
 							className="group flex flex-col p-6 md:p-7 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
 						>
 							<div className="space-y-4 mb-6">
@@ -176,12 +181,12 @@ export default function Skills() {
 									</div>
 								))}
 							</div>
-						</div>
+						</Reveal>
 					))}
 				</div>
 
 				{/* What the AI work actually is */}
-				<div className="mt-20 max-w-4xl mx-auto text-center">
+				<Reveal className="mt-20 max-w-4xl mx-auto text-center">
 					<div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full">
 						<AutoAwesomeIcon sx={{ fontSize: 14 }} className="text-black dark:text-white" />
 						<span className="text-xs uppercase tracking-wider text-gray-700 dark:text-gray-300 font-medium">
@@ -206,7 +211,7 @@ export default function Skills() {
 							</span>
 						))}
 					</div>
-				</div>
+				</Reveal>
 			</div>
 		</section>
 	);

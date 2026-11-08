@@ -58,3 +58,33 @@ html {
 		transform: translateY(var(--reveal-distance));
 	}
 }
+
+/*
+ * Pointer field. usePointerField publishes --px / --py on a card grid; this is
+ * the only thing that reads them. A single soft light tracks the cursor across
+ * the whole grid rather than each card lighting independently. Nothing here
+ * runs when the pointer is absent, which is what touch and keyboard readers get.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	[data-pointer-field] {
+		position: relative;
+	}
+
+	[data-pointer-field]::after {
+		content: "";
+		position: absolute;
+		inset: -2rem;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 400ms ease;
+		background: radial-gradient(
+			20rem circle at calc(var(--px, 0.5) * 100%) calc(var(--py, 0.5) * 100%),
+			currentColor,
+			transparent 65%
+		);
+	}
+
+	[data-pointer-field]:hover::after {
+		opacity: 0.05;
+	}
+}

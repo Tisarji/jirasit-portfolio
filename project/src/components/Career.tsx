@@ -16,6 +16,7 @@ import FactCheckIcon from "@mui/icons-material/FactCheck";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import MemoryIcon from "@mui/icons-material/Memory";
 import { formatTenure, formatTenureRange, ROLES, type Involvement, type Role } from "@/content/career";
+import Reveal from "./Reveal";
 
 // Icons are presentation, so they live here rather than in the data module.
 const INVOLVEMENT_ICONS: Record<string, React.ReactNode> = {
@@ -27,9 +28,9 @@ const INVOLVEMENT_ICONS: Record<string, React.ReactNode> = {
 	"Company Landing Page": <PublicIcon sx={{ fontSize: 28 }} />,
 };
 
-function InvolvementCard({ item }: { item: Involvement }) {
+function InvolvementCard({ item, index }: { item: Involvement; index: number }) {
 	return (
-		<div className="group relative p-5 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-lg flex flex-col">
+		<Reveal index={index} className="group relative p-5 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-lg flex flex-col">
 			<div className="flex items-center gap-3 mb-3">
 				<div className="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg text-black dark:text-white">
 					{INVOLVEMENT_ICONS[item.name] ?? <CodeIcon sx={{ fontSize: 28 }} />}
@@ -77,13 +78,13 @@ function InvolvementCard({ item }: { item: Involvement }) {
 					</a>
 				)}
 			</div>
-		</div>
+		</Reveal>
 	);
 }
 
-function RoleCard({ role }: { role: Role }) {
+function RoleCard({ role, index }: { role: Role; index: number }) {
 	return (
-		<div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow duration-500">
+		<Reveal index={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow duration-500">
 			<div className="p-6 md:p-8 border-b border-gray-200 dark:border-gray-800">
 				<div className="space-y-2">
 					<div className="flex flex-wrap items-center gap-3">
@@ -129,8 +130,8 @@ function RoleCard({ role }: { role: Role }) {
 					What I worked on
 				</p>
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-					{role.involvements.map((item) => (
-						<InvolvementCard key={item.name} item={item} />
+					{role.involvements.map((item, i) => (
+						<InvolvementCard key={item.name} item={item} index={i} />
 					))}
 				</div>
 
@@ -150,7 +151,7 @@ function RoleCard({ role }: { role: Role }) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Reveal>
 	);
 }
 
@@ -206,7 +207,7 @@ export default function Career() {
 			</div>
 
 			<div className="max-w-6xl mx-auto">
-				<div className="text-center mb-16 space-y-4">
+				<Reveal className="text-center mb-16 space-y-4">
 					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 						Where I've been
 					</p>
@@ -217,7 +218,7 @@ export default function Career() {
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						My path through real work and rigorous schooling.
 					</p>
-				</div>
+				</Reveal>
 
 				{/* Experience */}
 				<div className="mb-24">
@@ -227,8 +228,8 @@ export default function Career() {
 					</div>
 
 					<div className="space-y-8">
-						{ROLES.map((role) => (
-							<RoleCard key={role.company} role={role} />
+						{ROLES.map((role, i) => (
+							<RoleCard key={role.company} role={role} index={i} />
 						))}
 					</div>
 				</div>
@@ -242,7 +243,7 @@ export default function Career() {
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{/* Mahanakorn University */}
-						<div className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl p-6 md:p-7">
+						<Reveal className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl p-6 md:p-7">
 							<div className="flex items-start gap-4 mb-5">
 								<div className="w-14 h-14 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
 									<SchoolIcon sx={{ fontSize: 28 }} />
@@ -309,10 +310,10 @@ export default function Career() {
 									</div>
 								))}
 							</div>
-						</div>
+						</Reveal>
 
 						{/* 42 Bangkok */}
-						<div className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl p-6 md:p-7">
+						<Reveal index={1} className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl p-6 md:p-7">
 							<div className="flex items-start gap-4 mb-5">
 								<div className="w-14 h-14 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
 									<CodeIcon sx={{ fontSize: 28 }} />
@@ -357,7 +358,7 @@ export default function Career() {
 									</div>
 								))}
 							</div>
-						</div>
+						</Reveal>
 					</div>
 				</div>
 			</div>

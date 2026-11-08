@@ -4,6 +4,7 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import ComputerIcon from "@mui/icons-material/Computer";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import Reveal from "./Reveal";
 
 export default function Intro() {
 	return (
@@ -27,34 +28,23 @@ export default function Intro() {
 
 			<div className="text-center max-w-5xl mx-auto relative space-y-10">
 				{/* Name */}
-				<div className="space-y-5">
+				<Reveal className="space-y-5">
 					<h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-wider leading-[1.05] pb-2">
-						<span className="block bg-gradient-to-r from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent animate-fadeInUp">
+						<span className="block bg-gradient-to-r from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent">
 							Jirasit
 						</span>
-						<span
-							className="block font-light bg-gradient-to-l from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent animate-slideInRight pb-2"
-							style={{ animationDelay: "0.3s" }}
-						>
+						<span className="block font-light bg-gradient-to-l from-black via-gray-600 to-black dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent pb-2">
 							Karunwong
 						</span>
 					</h1>
 
 					<div className="flex justify-center">
-						<div className="relative w-40 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white overflow-hidden">
-							<div
-								className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent dark:via-black animate-shimmer"
-								style={{ backgroundSize: "200% 100%" }}
-							/>
-						</div>
+						<div className="relative w-40 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white" />
 					</div>
-				</div>
+				</Reveal>
 
 				{/* Value prop */}
-				<div
-					className="space-y-4 animate-fadeInUp max-w-3xl mx-auto"
-					style={{ animationDelay: "0.6s" }}
-				>
+				<Reveal index={1} className="space-y-4 max-w-3xl mx-auto">
 					<p className="text-2xl md:text-3xl text-gray-800 dark:text-gray-200 font-extralight tracking-wide">
 						Software &amp; Firmware Engineer
 					</p>
@@ -63,13 +53,10 @@ export default function Intro() {
 						front, the quiet engines behind them, and lately the code that runs on the
 						device itself.
 					</p>
-				</div>
+				</Reveal>
 
 				{/* Quick highlights */}
-				<div
-					className="grid grid-cols-3 max-w-2xl mx-auto divide-x divide-gray-200 dark:divide-gray-800 border-y border-gray-200 dark:border-gray-800 animate-fadeInUp"
-					style={{ animationDelay: "0.9s" }}
-				>
+				<Reveal index={2} className="grid grid-cols-3 max-w-2xl mx-auto divide-x divide-gray-200 dark:divide-gray-800 border-y border-gray-200 dark:border-gray-800">
 					<div className="py-5">
 						<p className="text-2xl md:text-3xl font-light text-black dark:text-white">
 							Full-Stack
@@ -90,13 +77,10 @@ export default function Intro() {
 							Current Focus
 						</p>
 					</div>
-				</div>
+				</Reveal>
 
 				{/* CTAs */}
-				<div
-					className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp"
-					style={{ animationDelay: "1.2s" }}
-				>
+				<Reveal index={3} className="flex flex-col sm:flex-row gap-4 justify-center">
 					<a
 						href="#projects"
 						className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-500 font-medium tracking-wide shadow-lg hover:shadow-2xl"
@@ -139,7 +123,7 @@ export default function Intro() {
 							</svg>
 						</span>
 					</a>
-				</div>
+				</Reveal>
 
 				{/* Floating decorative icons */}
 				<div className="absolute -top-12 -left-12 opacity-10 animate-float">
@@ -152,13 +136,13 @@ export default function Intro() {
 					<ComputerIcon sx={{ fontSize: 50 }} />
 				</div>
 				<div
-					className="absolute top-1/4 -right-8 opacity-10 animate-bounce-gentle"
+					className="absolute top-1/4 -right-8 opacity-10 animate-float"
 					style={{ animationDelay: "2s" }}
 				>
 					<RocketLaunchIcon sx={{ fontSize: 30 }} />
 				</div>
 				<div
-					className="absolute bottom-1/4 -left-8 opacity-10 animate-bounce-gentle"
+					className="absolute bottom-1/4 -left-8 opacity-10 animate-float"
 					style={{ animationDelay: "3s" }}
 				>
 					<AutoAwesomeIcon sx={{ fontSize: 40 }} />

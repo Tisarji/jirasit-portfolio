@@ -6,6 +6,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LaunchIcon from "@mui/icons-material/Launch";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import Reveal from "./Reveal";
 
 type MediaAction = "github" | "request" | "view" | "none";
 
@@ -208,7 +209,7 @@ export default function Gallery() {
 	return (
 		<section id="gallery" className="py-20 md:py-28 px-6 md:px-8">
 			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-12 space-y-4">
+				<Reveal className="text-center mb-12 space-y-4">
 					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 						Moments & Work
 					</p>
@@ -219,7 +220,7 @@ export default function Gallery() {
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						A visual tour of the projects, events, and people behind the code.
 					</p>
-				</div>
+				</Reveal>
 
 				{/* Category filters */}
 				<div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -256,8 +257,9 @@ export default function Gallery() {
 						const isHovered = hoveredIndex === index;
 						const isClickable = item.action !== "none";
 						return (
-							<div
+							<Reveal
 								key={item.id}
+								index={index}
 								className={`break-inside-avoid mb-4 relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-500 ${
 									isClickable ? "cursor-pointer" : "cursor-default"
 								}`}
@@ -303,7 +305,7 @@ export default function Gallery() {
 									</h3>
 									{isClickable && <ActionBadge action={item.action} />}
 								</div>
-							</div>
+							</Reveal>
 						);
 					})}
 				</div>

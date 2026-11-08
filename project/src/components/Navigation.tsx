@@ -45,12 +45,11 @@ export default function Navigation() {
 
 					{/* Enhanced Desktop Navigation */}
 					<div className="hidden md:flex items-center space-x-1">
-						{navItems.map((item, index) => (
+						{navItems.map((item) => (
 							<a
 								key={item.name}
 								href={item.href}
 								className="group relative px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/50"
-								style={{animationDelay: `${index * 0.1}s`}}
 							>
 								<span className="relative z-10 font-medium tracking-wide">
 									{item.name}

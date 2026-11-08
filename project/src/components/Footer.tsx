@@ -2,6 +2,7 @@
 
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Reveal from "./Reveal";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
@@ -58,7 +59,7 @@ export default function Footer() {
 					{/* Main Content */}
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16">
 						{/* Brand & Contact Info */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal className="lg:col-span-1 space-y-8">
 							<div className="space-y-4">
 								<h3 className="text-3xl font-light tracking-tight">
 									Let's Create
@@ -97,10 +98,10 @@ export default function Footer() {
 									</div>
 								</div>
 							</div>
-						</div>
+						</Reveal>
 
 						{/* Social Links */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal index={1} className="lg:col-span-1 space-y-8">
 							<h3 className="text-2xl font-light">Connect</h3>
 							<div className="space-y-3">
 								{socialLinks.map((link, index) => (
@@ -129,10 +130,10 @@ export default function Footer() {
 									</a>
 								))}
 							</div>
-						</div>
+						</Reveal>
 
 						{/* Quick Navigation */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal index={2} className="lg:col-span-1 space-y-8">
 							<h3 className="text-2xl font-light">Navigate</h3>
 							<div className="grid grid-cols-2 gap-3">
 								{quickLinks.map((link, index) => (
@@ -147,7 +148,7 @@ export default function Footer() {
 									</a>
 								))}
 							</div>
-						</div>
+						</Reveal>
 					</div>
 
 					{/* Bottom Section */}

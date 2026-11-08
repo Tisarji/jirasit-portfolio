@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { ROLES } from "@/content/career";
+import Reveal from "./Reveal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TranslateIcon from "@mui/icons-material/Translate";
 import SchoolIcon from "@mui/icons-material/School";
@@ -17,7 +20,7 @@ export default function About() {
 		<section id="about" className="py-20 md:py-28 px-6 md:px-8">
 			<div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 				{/* Left: copy */}
-				<div className="space-y-8 group order-2 lg:order-1">
+				<Reveal className="space-y-8 group order-2 lg:order-1">
 					<div className="space-y-4">
 						<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 							Who I am
@@ -49,9 +52,10 @@ export default function About() {
 
 					{/* Quick facts */}
 					<dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-						{facts.map((f) => (
-							<div
+						{facts.map((f, i) => (
+							<Reveal
 								key={f.label}
+								index={i}
 								className="flex items-start gap-3 p-3 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300"
 							>
 								<div className="mt-0.5 text-black dark:text-white shrink-0">{f.icon}</div>
@@ -63,7 +67,7 @@ export default function About() {
 										{f.value}
 									</dd>
 								</div>
-							</div>
+							</Reveal>
 						))}
 					</dl>
 
@@ -96,10 +100,10 @@ export default function About() {
 							</svg>
 						</a>
 					</div>
-				</div>
+				</Reveal>
 
 				{/* Right: portrait */}
-				<div className="relative group order-1 lg:order-2">
+				<Reveal index={1} className="relative group order-1 lg:order-2">
 					<div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
 					<div className="relative w-full h-96 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-gray-300 dark:group-hover:border-gray-600 transition-all duration-500 overflow-hidden">
 						<div className="relative w-64 h-64 group-hover:scale-105 transition-transform duration-500">
@@ -124,7 +128,7 @@ export default function About() {
 						</div>
 					</div>
 					<div className="absolute -bottom-4 -right-4 w-8 h-8 bg-black dark:bg-white transform rotate-45 opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-				</div>
+				</Reveal>
 			</div>
 		</section>
 	);
