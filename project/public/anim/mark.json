@@ -1,0 +1,1997 @@
+{
+	"version": 2,
+	"id": "mark",
+	"revision": "sha256:dc05a376f6e0e3aebca87c9f589423fea9f4200983d15fead9dedd3f51ec5e60",
+	"name": "Nav mark",
+	"canvas": {
+		"width": 120,
+		"height": 32,
+		"pixelAspectRatio": 1,
+		"backgroundColor": {
+			"r": 0,
+			"g": 0,
+			"b": 0,
+			"a": 1
+		}
+	},
+	"timing": {
+		"ticksPerSecond": 240,
+		"frameRate": {
+			"numerator": 60,
+			"denominator": 1
+		},
+		"durationTicks": 600,
+		"displayStartTick": 0
+	},
+	"assets": {},
+	"compositions": {
+		"main": {
+			"id": "main",
+			"name": "Main",
+			"width": 120,
+			"height": 32,
+			"durationTicks": 600,
+			"nodes": {
+				"bar-0": {
+					"id": "bar-0",
+					"name": "bar-0",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 4.285714285714286,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-0.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.3,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-0.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.3,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-0.scale.2",
+									"tick": 160,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-0.scale.3",
+									"tick": 400,
+									"value": {
+										"x": 1,
+										"y": 0.3,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-0.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.3,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-1": {
+					"id": "bar-1",
+					"name": "bar-1",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 12.857142857142858,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-1.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.407692048929401,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-1.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.407692048929401,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-1.scale.2",
+									"tick": 172,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-1.scale.3",
+									"tick": 412,
+									"value": {
+										"x": 1,
+										"y": 0.407692048929401,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-1.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.407692048929401,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-2": {
+					"id": "bar-2",
+					"name": "bar-2",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 21.428571428571427,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-2.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-2.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-2.scale.2",
+									"tick": 184,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-2.scale.3",
+									"tick": 424,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-2.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-3": {
+					"id": "bar-3",
+					"name": "bar-3",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 30,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-3.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-3.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-3.scale.2",
+									"tick": 196,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-3.scale.3",
+									"tick": 436,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-3.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-4": {
+					"id": "bar-4",
+					"name": "bar-4",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 38.57142857142857,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-4.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-4.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-4.scale.2",
+									"tick": 204,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-4.scale.3",
+									"tick": 444,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-4.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-5": {
+					"id": "bar-5",
+					"name": "bar-5",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 47.14285714285714,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-5.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-5.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-5.scale.2",
+									"tick": 216,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-5.scale.3",
+									"tick": 456,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-5.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-6": {
+					"id": "bar-6",
+					"name": "bar-6",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 55.714285714285715,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-6.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-6.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-6.scale.2",
+									"tick": 228,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-6.scale.3",
+									"tick": 468,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-6.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-7": {
+					"id": "bar-7",
+					"name": "bar-7",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 64.28571428571428,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-7.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-7.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-7.scale.2",
+									"tick": 240,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-7.scale.3",
+									"tick": 480,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-7.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.7467189933441243,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-8": {
+					"id": "bar-8",
+					"name": "bar-8",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 72.85714285714286,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-8.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-8.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-8.scale.2",
+									"tick": 252,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-8.scale.3",
+									"tick": 492,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-8.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.7207573092084367,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-9": {
+					"id": "bar-9",
+					"name": "bar-9",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 81.42857142857143,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-9.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-9.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-9.scale.2",
+									"tick": 264,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-9.scale.3",
+									"tick": 504,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-9.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.6703427396521454,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-10": {
+					"id": "bar-10",
+					"name": "bar-10",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 90,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-10.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-10.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-10.scale.2",
+									"tick": 276,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-10.scale.3",
+									"tick": 516,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-10.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.5984051962083579,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-11": {
+					"id": "bar-11",
+					"name": "bar-11",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 98.57142857142857,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-11.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-11.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-11.scale.2",
+									"tick": 284,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-11.scale.3",
+									"tick": 524,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-11.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.5091254274196959,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-12": {
+					"id": "bar-12",
+					"name": "bar-12",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 107.14285714285714,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-12.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.4076920489294009,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-12.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.4076920489294009,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-12.scale.2",
+									"tick": 296,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-12.scale.3",
+									"tick": 536,
+									"value": {
+										"x": 1,
+										"y": 0.4076920489294009,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-12.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.4076920489294009,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"bar-13": {
+					"id": "bar-13",
+					"name": "bar-13",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 115.71428571428571,
+								"y": 32,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 16,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "keyframed",
+							"keyframes": [
+								{
+									"id": "bar-13.scale.0",
+									"tick": 0,
+									"value": {
+										"x": 1,
+										"y": 0.30000000000000004,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-13.scale.1",
+									"tick": 120,
+									"value": {
+										"x": 1,
+										"y": 0.30000000000000004,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-13.scale.2",
+									"tick": 308,
+									"value": {
+										"x": 1,
+										"y": 1,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-13.scale.3",
+									"tick": 548,
+									"value": {
+										"x": 1,
+										"y": 0.30000000000000004,
+										"z": 1
+									},
+									"interpolation": "linear"
+								},
+								{
+									"id": "bar-13.scale.4",
+									"tick": 600,
+									"value": {
+										"x": 1,
+										"y": 0.30000000000000004,
+										"z": 1
+									},
+									"interpolation": "hold"
+								}
+							]
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "rect",
+					"size": {
+						"kind": "constant",
+						"value": {
+							"width": 2.571428571428571,
+							"height": 32
+						}
+					},
+					"cornerRadius": {
+						"kind": "constant",
+						"value": 0
+					},
+					"style": {
+						"fill": {
+							"color": {
+								"kind": "constant",
+								"value": {
+									"r": 1,
+									"g": 1,
+									"b": 1,
+									"a": 1
+								}
+							},
+							"opacity": {
+								"kind": "constant",
+								"value": 1
+							}
+						}
+					}
+				},
+				"field": {
+					"id": "field",
+					"name": "field",
+					"visible": true,
+					"inTick": 0,
+					"outTick": 600,
+					"opacity": {
+						"kind": "constant",
+						"value": 1
+					},
+					"transform": {
+						"position": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"anchor": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"scale": {
+							"kind": "constant",
+							"value": {
+								"x": 1,
+								"y": 1,
+								"z": 1
+							}
+						},
+						"rotation": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							}
+						},
+						"skew": {
+							"kind": "constant",
+							"value": {
+								"x": 0,
+								"y": 0
+							}
+						}
+					},
+					"blendMode": "normal",
+					"type": "group",
+					"children": [
+						"bar-0",
+						"bar-1",
+						"bar-2",
+						"bar-3",
+						"bar-4",
+						"bar-5",
+						"bar-6",
+						"bar-7",
+						"bar-8",
+						"bar-9",
+						"bar-10",
+						"bar-11",
+						"bar-12",
+						"bar-13"
+					]
+				}
+			},
+			"rootNodeIds": [
+				"field"
+			]
+		}
+	},
+	"rootCompositionId": "main",
+	"components": {},
+	"markers": [
+		{
+			"id": "idle",
+			"name": "idle",
+			"tick": 0,
+			"durationTicks": 0
+		},
+		{
+			"id": "hover",
+			"name": "hover",
+			"tick": 120,
+			"durationTicks": 0
+		},
+		{
+			"id": "end",
+			"name": "end",
+			"tick": 600,
+			"durationTicks": 0
+		}
+	],
+	"design": {
+		"tokens": {
+			"looping": false
+		}
+	},
+	"capabilities": {
+		"required": [],
+		"optional": [],
+		"unsupportedPolicy": "warn"
+	},
+	"interaction": {
+		"version": 1,
+		"inputs": [],
+		"hitAreas": [
+			{
+				"nodeId": "field",
+				"id": "mark",
+				"shape": "bounds"
+			}
+		],
+		"bindings": []
+	},
+	"stateMachine": {
+		"version": 1,
+		"initialStateId": "state-idle",
+		"states": [
+			{
+				"id": "state-idle",
+				"name": "idle",
+				"entryMarkerId": "idle",
+				"exitMarkerId": "hover",
+				"playback": "once"
+			},
+			{
+				"id": "state-hover",
+				"name": "hover",
+				"entryMarkerId": "hover",
+				"exitMarkerId": "end",
+				"playback": "once"
+			}
+		],
+		"transitions": [
+			{
+				"id": "transition-idle-to-hover-pointerenter",
+				"fromStateId": "state-idle",
+				"toStateId": "state-hover",
+				"trigger": "pointerenter",
+				"hitAreaId": "mark"
+			},
+			{
+				"id": "transition-hover-to-idle-pointerleave",
+				"fromStateId": "state-hover",
+				"toStateId": "state-idle",
+				"trigger": "pointerleave",
+				"hitAreaId": "mark"
+			}
+		]
+	}
+}

@@ -1,5 +1,96 @@
 @import "tailwindcss";
 
+/*
+ * layout.tsx puts these on <body> via next/font. Deleting the v3 config took
+ * the fontFamily mapping with it, so font-sans fell back to Tailwind's default
+ * stack and both Geist faces were fetched on every load without rendering a
+ * glyph.
+ */
+@theme {
+	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
+}
+
+/*
+ * Scroll reveal. The rest state is the *final* state, so content is readable
+ * with JavaScript off and complete for anyone who asked for less motion. The
+ * entrance offset is the exception, applied only while unrevealed.
+ */
+[data-reveal] {
+	--reveal-delay: 0ms;
+	--reveal-distance: 1.5rem;
+	opacity: 1;
+	transform: none;
+}
+
+/*
+ * `scripting: enabled` is what keeps this honest. The hidden state is only ever
+ * correct when something will arrive to undo it; with JavaScript off nothing
+ * does, and without this guard every revealed block on the page renders at
+ * opacity 0 — a blank document. A browser too old to know the query simply
+ * skips the block and shows the content, which is the right way to fail.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	[data-reveal] {
+		transition:
+			opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
+			transform 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+	}
+
+	html[data-js] [data-reveal]:not([data-revealed]) {
+		opacity: 0;
+		transform: translateY(var(--reveal-distance));
+	}
+}
+
+/*
+ * Pointer field. usePointerField publishes --px / --py on a card grid; this is
+ * the only thing that reads them. A single soft light tracks the cursor across
+ * the whole grid rather than each card lighting independently. Nothing here
+ * runs when the pointer is absent, which is what touch and keyboard readers get.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	[data-pointer-field] {
+		position: relative;
+	}
+
+	[data-pointer-field]::after {
+		content: "";
+		position: absolute;
+		inset: -2rem;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 400ms ease;
+		background: radial-gradient(
+			20rem circle at calc(var(--px, 0.5) * 100%) calc(var(--py, 0.5) * 100%),
+			currentColor,
+			transparent 65%
+		);
+	}
+
+	[data-pointer-field]:hover::after {
+		opacity: 0.05;
+	}
+}
+
+/*
+ * Tailwind's animate-pulse and animate-bounce keep running under the OS
+ * preference — nothing disables them for free, and the page still carries five
+ * (the Current badge dot, three footer decorations, the scroll hint). Honouring
+ * the preference means honouring it everywhere, not only in the new system.
+ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
 }

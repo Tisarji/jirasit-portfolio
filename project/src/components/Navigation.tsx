@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import NavMark from "./clayzo/NavMark";
 
 export default function Navigation() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
+	const [logoHovered, setLogoHovered] = useState(false);
 
 	const navItems = [
 		{ name: "About", href: "#about" },
@@ -33,24 +35,27 @@ export default function Navigation() {
 			<div className="max-w-6xl mx-auto px-6 md:px-8">
 				<div className="flex items-center justify-between h-16">
 					{/* Enhanced Logo */}
-					<a 
-						href="#" 
-						className="group relative text-2xl font-extralight tracking-wider hover:scale-105 transition-all duration-300"
+					<a
+						href="#"
+						onPointerEnter={() => setLogoHovered(true)}
+						onPointerLeave={() => setLogoHovered(false)}
+						onFocus={() => setLogoHovered(true)}
+						onBlur={() => setLogoHovered(false)}
+						className="group relative flex flex-col items-start text-2xl font-extralight tracking-wider"
 					>
 						<span className="relative z-10 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 							JK
 						</span>
-						<div className="absolute -inset-2 bg-gradient-to-r from-black/5 to-transparent dark:from-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+						<NavMark hovered={logoHovered} />
 					</a>
 
 					{/* Enhanced Desktop Navigation */}
 					<div className="hidden md:flex items-center space-x-1">
-						{navItems.map((item, index) => (
+						{navItems.map((item) => (
 							<a
 								key={item.name}
 								href={item.href}
 								className="group relative px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/50"
-								style={{animationDelay: `${index * 0.1}s`}}
 							>
 								<span className="relative z-10 font-medium tracking-wide">
 									{item.name}

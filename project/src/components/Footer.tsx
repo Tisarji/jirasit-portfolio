@@ -2,6 +2,8 @@
 
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Reveal from "./Reveal";
+import SectionRule from "./clayzo/SectionRule";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
@@ -58,7 +60,7 @@ export default function Footer() {
 					{/* Main Content */}
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16">
 						{/* Brand & Contact Info */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal className="lg:col-span-1 space-y-8">
 							<div className="space-y-4">
 								<h3 className="text-3xl font-light tracking-tight">
 									Let's Create
@@ -66,6 +68,7 @@ export default function Footer() {
 										Something Amazing
 									</span>
 								</h3>
+								<SectionRule variant={5} className="" />
 								<p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-md">
 									Always interested in new opportunities, collaborations, and meaningful conversations. 
 									Let's build the future together.
@@ -97,10 +100,10 @@ export default function Footer() {
 									</div>
 								</div>
 							</div>
-						</div>
+						</Reveal>
 
 						{/* Social Links */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal index={1} className="lg:col-span-1 space-y-8">
 							<h3 className="text-2xl font-light">Connect</h3>
 							<div className="space-y-3">
 								{socialLinks.map((link, index) => (
@@ -129,10 +132,10 @@ export default function Footer() {
 									</a>
 								))}
 							</div>
-						</div>
+						</Reveal>
 
 						{/* Quick Navigation */}
-						<div className="lg:col-span-1 space-y-8">
+						<Reveal index={2} className="lg:col-span-1 space-y-8">
 							<h3 className="text-2xl font-light">Navigate</h3>
 							<div className="grid grid-cols-2 gap-3">
 								{quickLinks.map((link, index) => (
@@ -147,18 +150,7 @@ export default function Footer() {
 									</a>
 								))}
 							</div>
-							
-							{/* Status Indicator */}
-							<div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-								<div className="flex items-center gap-3">
-									<div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-									<div>
-										<p className="text-sm font-medium text-green-800 dark:text-green-300">Available for Work</p>
-										<p className="text-xs text-green-600 dark:text-green-400">Open to new opportunities</p>
-									</div>
-								</div>
-							</div>
-						</div>
+						</Reveal>
 					</div>
 
 					{/* Bottom Section */}

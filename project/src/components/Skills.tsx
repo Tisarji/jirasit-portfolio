@@ -5,6 +5,9 @@ import StorageIcon from "@mui/icons-material/Storage";
 import BuildIcon from "@mui/icons-material/Build";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import Reveal from "./Reveal";
+import { usePointerField } from "@/hooks/usePointerField";
+import SectionRule from "./clayzo/SectionRule";
 
 type Skill = { name: string; level: 1 | 2 | 3 };
 
@@ -59,6 +62,7 @@ const skillCategories: Category[] = [
 			{ name: "Robotics", level: 3 },
 			{ name: "IoT Devices", level: 2 },
 			{ name: "Hardware Integration", level: 2 },
+			{ name: "Firmware", level: 1 },
 		],
 	},
 	{
@@ -81,12 +85,9 @@ const skillCategories: Category[] = [
 const aiTopics = [
 	"Large Language Models (LLMs)",
 	"Retrieval-Augmented Generation (RAG)",
-	"Machine Learning",
-	"Deep Learning",
-	"Generative AI",
+	"Rubric Scoring",
+	"AWS Bedrock",
 	"Natural Language Processing",
-	"Computer Vision",
-	"Prompt Engineering",
 ];
 
 function LevelDots({ level }: { level: 1 | 2 | 3 }) {
@@ -106,6 +107,8 @@ function LevelDots({ level }: { level: 1 | 2 | 3 }) {
 }
 
 export default function Skills() {
+	const gridRef = usePointerField<HTMLDivElement>();
+
 	return (
 		<section id="skills" className="py-20 md:py-28 px-6 md:px-8 relative overflow-hidden">
 			<div className="absolute inset-0 -z-10 pointer-events-none">
@@ -114,14 +117,14 @@ export default function Skills() {
 			</div>
 
 			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16 space-y-4">
+				<Reveal className="text-center mb-16 space-y-4">
 					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 						What I can do
 					</p>
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Skills
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={1} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						Four areas of craft — each with a plain-English explanation of what
 						it actually enables.
@@ -142,12 +145,13 @@ export default function Skills() {
 							<span className="text-xs text-gray-500 uppercase tracking-wider">Expert</span>
 						</div>
 					</div>
-				</div>
+				</Reveal>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-					{skillCategories.map((category) => (
-						<div
+				<div ref={gridRef} data-pointer-field="" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					{skillCategories.map((category, index) => (
+						<Reveal
 							key={category.title}
+							index={index}
 							className="group flex flex-col p-6 md:p-7 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
 						>
 							<div className="space-y-4 mb-6">
@@ -178,24 +182,25 @@ export default function Skills() {
 									</div>
 								))}
 							</div>
-						</div>
+						</Reveal>
 					))}
 				</div>
 
-				{/* Currently learning */}
-				<div className="mt-20 max-w-4xl mx-auto text-center">
+				{/* What the AI work actually is */}
+				<Reveal className="mt-20 max-w-4xl mx-auto text-center">
 					<div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full">
 						<AutoAwesomeIcon sx={{ fontSize: 14 }} className="text-black dark:text-white" />
 						<span className="text-xs uppercase tracking-wider text-gray-700 dark:text-gray-300 font-medium">
-							Current focus
+							In production
 						</span>
 					</div>
 					<h3 className="text-2xl md:text-3xl font-light mb-4 text-black dark:text-white">
-						Going deep on AI & Machine Learning
+						AI that has to show its work
 					</h3>
 					<p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-8">
-						Building smart apps that understand language, images, and context —
-						from chatbots and search to automation and decision-making tools.
+						An auditor cannot sign off on an answer they cannot trace. So the standards
+						check I build reads a requirement, answers it, and cites the rule it leaned
+						on — retrieval, scoring against a rubric, and a reason a human can check.
 					</p>
 					<div className="flex flex-wrap justify-center gap-2">
 						{aiTopics.map((topic) => (
@@ -207,7 +212,7 @@ export default function Skills() {
 							</span>
 						))}
 					</div>
-				</div>
+				</Reveal>
 			</div>
 		</section>
 	);

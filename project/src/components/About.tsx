@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { ROLES } from "@/content/career";
+import Reveal from "./Reveal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TranslateIcon from "@mui/icons-material/Translate";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
+import SectionRule from "./clayzo/SectionRule";
 
 export default function About() {
 	const facts = [
 		{ icon: <LocationOnIcon sx={{ fontSize: 18 }} />, label: "Based in", value: "Bangkok, Thailand" },
-		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently", value: "SWE @ Sati Co., Ltd." },
+		{ icon: <WorkIcon sx={{ fontSize: 18 }} />, label: "Currently at", value: ROLES[0].company },
 		{ icon: <SchoolIcon sx={{ fontSize: 18 }} />, label: "Studied at", value: "MUT · 42 Bangkok" },
 		{ icon: <TranslateIcon sx={{ fontSize: 18 }} />, label: "Languages", value: "Thai · English" },
 	];
@@ -16,7 +21,7 @@ export default function About() {
 		<section id="about" className="py-20 md:py-28 px-6 md:px-8">
 			<div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 				{/* Left: copy */}
-				<div className="space-y-8 group order-2 lg:order-1">
+				<Reveal className="space-y-8 group order-2 lg:order-1">
 					<div className="space-y-4">
 						<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 							Who I am
@@ -24,14 +29,15 @@ export default function About() {
 						<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 							About Me
 						</h2>
-						<div className="w-24 h-0.5 bg-gradient-to-r from-black to-transparent dark:from-white dark:to-transparent transform group-hover:scale-x-110 transition-transform duration-500" />
+						<SectionRule variant={0} className="" />
 					</div>
 
 					<div className="space-y-5">
 						<p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed font-light">
-							I'm a <span className="font-medium text-black dark:text-white">full-stack developer</span>
+							I'm a <span className="font-medium text-black dark:text-white">software and firmware engineer</span>
 							{" "}— meaning I build <em>both</em> the visible side of a website or app (the part
-							you click) and the invisible engine behind it (where the data lives).
+							you click) and the invisible engine behind it (where the data lives), and
+							increasingly the code that runs on the hardware itself.
 						</p>
 						<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
 							My favorite kind of work is turning a messy, ambiguous problem into
@@ -47,9 +53,10 @@ export default function About() {
 
 					{/* Quick facts */}
 					<dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-						{facts.map((f) => (
-							<div
+						{facts.map((f, i) => (
+							<Reveal
 								key={f.label}
+								index={i}
 								className="flex items-start gap-3 p-3 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300"
 							>
 								<div className="mt-0.5 text-black dark:text-white shrink-0">{f.icon}</div>
@@ -61,7 +68,7 @@ export default function About() {
 										{f.value}
 									</dd>
 								</div>
-							</div>
+							</Reveal>
 						))}
 					</dl>
 
@@ -94,17 +101,17 @@ export default function About() {
 							</svg>
 						</a>
 					</div>
-				</div>
+				</Reveal>
 
 				{/* Right: portrait */}
-				<div className="relative group order-1 lg:order-2">
+				<Reveal index={1} className="relative group order-1 lg:order-2">
 					<div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
 					<div className="relative w-full h-96 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-gray-300 dark:group-hover:border-gray-600 transition-all duration-500 overflow-hidden">
 						<div className="relative w-64 h-64 group-hover:scale-105 transition-transform duration-500">
 							<div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
 								<Image
 									src="/images/profile.webp"
-									alt="Jirasit Karunwong — Full Stack Developer"
+									alt="Jirasit Karunwong — Software and Firmware Engineer"
 									width={256}
 									height={256}
 									className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
@@ -122,7 +129,7 @@ export default function About() {
 						</div>
 					</div>
 					<div className="absolute -bottom-4 -right-4 w-8 h-8 bg-black dark:bg-white transform rotate-45 opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-				</div>
+				</Reveal>
 			</div>
 		</section>
 	);

@@ -9,6 +9,11 @@ import LaunchIcon from "@mui/icons-material/Launch";
 import TerrainIcon from "@mui/icons-material/Terrain";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import PsychologyIcon from "@mui/icons-material/Psychology";
+import type { CSSProperties } from "react";
+import Reveal, { staggerDelay } from "./Reveal";
+import { useReveal } from "@/hooks/useReveal";
+import { usePointerField } from "@/hooks/usePointerField";
+import SectionRule from "./clayzo/SectionRule";
 
 type ActionType = "github" | "website" | "email";
 
@@ -144,9 +149,13 @@ function ActionIcon({ type }: { type: ActionType }) {
 	return <EmailIcon sx={{ fontSize: 16 }} />;
 }
 
-function ProjectCard({ project, featured }: { project: Project; featured?: boolean }) {
+function ProjectCard({ project, featured, index = 0 }: { project: Project; featured?: boolean; index?: number }) {
+	const ref = useReveal<HTMLElement>();
 	return (
 		<article
+			ref={ref}
+			data-reveal=""
+			style={{ "--reveal-delay": `${staggerDelay(index)}ms` } as CSSProperties}
 			className={`group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col ${
 				featured ? "overflow-hidden" : ""
 			}`}
@@ -245,22 +254,25 @@ function ProjectCard({ project, featured }: { project: Project; featured?: boole
 }
 
 export default function Projects() {
+	const proGridRef = usePointerField<HTMLDivElement>();
+	const sysGridRef = usePointerField<HTMLDivElement>();
+
 	return (
 		<section id="projects" className="py-20 md:py-28 px-6 md:px-8">
 			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16 space-y-4">
+				<Reveal className="text-center mb-16 space-y-4">
 					<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-medium">
 						Selected Work
 					</p>
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Projects
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={3} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						Real things I've built — each explained in plain language so you
 						don't need a tech background to follow along.
 					</p>
-				</div>
+				</Reveal>
 
 				{/* Professional Work */}
 				<div className="mb-20">
@@ -274,9 +286,9 @@ export default function Projects() {
 							Production apps & websites
 						</span>
 					</div>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						{professionalProjects.map((p) => (
-							<ProjectCard key={p.title} project={p} featured />
+					<div ref={proGridRef} data-pointer-field="" className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{professionalProjects.map((p, i) => (
+							<ProjectCard key={p.title} project={p} index={i} featured />
 						))}
 					</div>
 				</div>
@@ -293,9 +305,9 @@ export default function Projects() {
 							42 School · low-level C
 						</span>
 					</div>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{systemsProjects.map((p) => (
-							<ProjectCard key={p.title} project={p} />
+					<div ref={sysGridRef} data-pointer-field="" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{systemsProjects.map((p, i) => (
+							<ProjectCard key={p.title} project={p} index={i} />
 						))}
 					</div>
 				</div>
