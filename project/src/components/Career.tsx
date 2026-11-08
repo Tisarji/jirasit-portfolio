@@ -17,6 +17,7 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import MemoryIcon from "@mui/icons-material/Memory";
 import { formatTenure, formatTenureRange, ROLES, type Involvement, type Role } from "@/content/career";
 import Reveal from "./Reveal";
+import SectionRule from "./clayzo/SectionRule";
 
 // Icons are presentation, so they live here rather than in the data module.
 const INVOLVEMENT_ICONS: Record<string, React.ReactNode> = {
@@ -214,7 +215,7 @@ export default function Career() {
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Experience
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={2} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						My path through real work and rigorous schooling.
 					</p>

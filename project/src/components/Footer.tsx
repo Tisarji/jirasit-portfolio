@@ -3,6 +3,7 @@
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Reveal from "./Reveal";
+import SectionRule from "./clayzo/SectionRule";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
@@ -67,6 +68,7 @@ export default function Footer() {
 										Something Amazing
 									</span>
 								</h3>
+								<SectionRule variant={5} className="" />
 								<p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-md">
 									Always interested in new opportunities, collaborations, and meaningful conversations. 
 									Let's build the future together.

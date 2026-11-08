@@ -7,6 +7,7 @@ import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturi
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Reveal from "./Reveal";
 import { usePointerField } from "@/hooks/usePointerField";
+import SectionRule from "./clayzo/SectionRule";
 
 type Skill = { name: string; level: 1 | 2 | 3 };
 
@@ -123,7 +124,7 @@ export default function Skills() {
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Skills
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={1} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						Four areas of craft — each with a plain-English explanation of what
 						it actually enables.

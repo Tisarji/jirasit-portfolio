@@ -7,6 +7,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TranslateIcon from "@mui/icons-material/Translate";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
+import SectionRule from "./clayzo/SectionRule";
 
 export default function About() {
 	const facts = [
@@ -28,7 +29,7 @@ export default function About() {
 						<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 							About Me
 						</h2>
-						<div className="w-24 h-0.5 bg-gradient-to-r from-black to-transparent dark:from-white dark:to-transparent transform group-hover:scale-x-110 transition-transform duration-500" />
+						<SectionRule variant={0} className="" />
 					</div>
 
 					<div className="space-y-5">

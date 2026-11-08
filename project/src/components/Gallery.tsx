@@ -7,6 +7,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LaunchIcon from "@mui/icons-material/Launch";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import Reveal from "./Reveal";
+import SectionRule from "./clayzo/SectionRule";
 
 type MediaAction = "github" | "request" | "view" | "none";
 
@@ -216,7 +217,7 @@ export default function Gallery() {
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Gallery
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={4} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						A visual tour of the projects, events, and people behind the code.
 					</p>

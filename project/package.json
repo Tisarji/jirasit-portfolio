@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run anim:check && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "anim:build": "tsx animations/build.ts",
+    "anim:check": "tsx animations/build.ts --check"
   },
   "dependencies": {
     "@clayzo/animation": "^0.3.21",
@@ -31,6 +33,7 @@
     "@vitejs/plugin-react": "^6.2.1",
     "jsdom": "^31.0.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
   }

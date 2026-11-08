@@ -13,6 +13,7 @@ import type { CSSProperties } from "react";
 import Reveal, { staggerDelay } from "./Reveal";
 import { useReveal } from "@/hooks/useReveal";
 import { usePointerField } from "@/hooks/usePointerField";
+import SectionRule from "./clayzo/SectionRule";
 
 type ActionType = "github" | "website" | "email";
 
@@ -266,7 +267,7 @@ export default function Projects() {
 					<h2 className="text-5xl md:text-6xl font-extralight tracking-wide bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
 						Projects
 					</h2>
-					<div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent dark:via-white mx-auto" />
+					<SectionRule variant={3} />
 					<p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
 						Real things I've built — each explained in plain language so you
 						don't need a tech background to follow along.
